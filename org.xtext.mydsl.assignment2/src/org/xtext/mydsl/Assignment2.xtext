@@ -1,0 +1,27 @@
+grammar org.xtext.mydsl.Assignment2 with org.eclipse.xtext.common.Terminals
+
+generate assignment2 "http://www.xtext.org/mydsl/Assignment2"
+
+MathExp:
+	'result' 'is' exp=Exp
+;
+
+Exp: // Illegal due to left recursion if "left=Exp"
+	left=Primary (operator=ExpOp right=Exp)?
+;
+
+ExpOp:
+	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
+;
+
+Primary:
+	Number | Parenthesis
+;
+
+Parenthesis:
+	'(' exp=Exp ')'
+;
+
+Number:
+	value=INT
+;
