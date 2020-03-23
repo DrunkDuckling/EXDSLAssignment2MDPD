@@ -6,15 +6,20 @@
     complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="Assignment2" basePackage="org.xtext.mydsl" disposableProviderFactory="true"
       fileExtensions="m_3" ecorePackage="Assignment2.ecore#/">
+    <genClasses ecoreClass="Assignment2.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Model/math"/>
+    </genClasses>
     <genClasses ecoreClass="Assignment2.ecore#//MathExp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//MathExp/exp"/>
     </genClasses>
-    <genClasses ecoreClass="Assignment2.ecore#//Exp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Exp/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Exp/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Exp/right"/>
+    <genClasses ecoreClass="Assignment2.ecore#//ExpMultDiv"/>
+    <genClasses ecoreClass="Assignment2.ecore#//ExpMinusPlus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//ExpMinusPlus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//ExpMinusPlus/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//ExpMinusPlus/right"/>
     </genClasses>
-    <genClasses ecoreClass="Assignment2.ecore#//ExpOp"/>
+    <genClasses ecoreClass="Assignment2.ecore#//ExpPM"/>
+    <genClasses ecoreClass="Assignment2.ecore#//ExpMD"/>
     <genClasses ecoreClass="Assignment2.ecore#//Primary"/>
     <genClasses ecoreClass="Assignment2.ecore#//Parenthesis">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Parenthesis/exp"/>
@@ -22,6 +27,7 @@
     <genClasses ecoreClass="Assignment2.ecore#//Number">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Assignment2.ecore#//Number/value"/>
     </genClasses>
+    <genClasses ecoreClass="Assignment2.ecore#//Exp"/>
     <genClasses ecoreClass="Assignment2.ecore#//Plus"/>
     <genClasses ecoreClass="Assignment2.ecore#//Minus"/>
     <genClasses ecoreClass="Assignment2.ecore#//Mult"/>

@@ -14,6 +14,6 @@ package org.xtext.mydsl.assignment2;
  * @model
  * @generated
  */
-public interface Div extends ExpOp
+public interface Div extends ExpMD
 {
 } // Div

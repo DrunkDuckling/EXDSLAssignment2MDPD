@@ -23,19 +23,34 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 	
+	public class ModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.Model");
+		private final Assignment cMathAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cMathMathExpParserRuleCall_0 = (RuleCall)cMathAssignment.eContents().get(0);
+		
+		//Model:
+		//	math+=MathExp*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//math+=MathExp*
+		public Assignment getMathAssignment() { return cMathAssignment; }
+		
+		//MathExp
+		public RuleCall getMathMathExpParserRuleCall_0() { return cMathMathExpParserRuleCall_0; }
+	}
 	public class MathExpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.MathExp");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cResultKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cIsKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cExpAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpExpParserRuleCall_2_0 = (RuleCall)cExpAssignment_2.eContents().get(0);
+		private final RuleCall cExpExpMinusPlusParserRuleCall_2_0 = (RuleCall)cExpAssignment_2.eContents().get(0);
 		
 		//MathExp:
-		//	'result' 'is' exp=Exp;
+		//	'result' 'is' exp=ExpMinusPlus;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'result' 'is' exp=Exp
+		//'result' 'is' exp=ExpMinusPlus
 		public Group getGroup() { return cGroup; }
 		
 		//'result'
@@ -44,55 +59,92 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 		//'is'
 		public Keyword getIsKeyword_1() { return cIsKeyword_1; }
 		
-		//exp=Exp
+		//exp=ExpMinusPlus
 		public Assignment getExpAssignment_2() { return cExpAssignment_2; }
 		
-		//Exp
-		public RuleCall getExpExpParserRuleCall_2_0() { return cExpExpParserRuleCall_2_0; }
+		//ExpMinusPlus
+		public RuleCall getExpExpMinusPlusParserRuleCall_2_0() { return cExpExpMinusPlusParserRuleCall_2_0; }
 	}
-	public class ExpElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.Exp");
+	public class ExpMultDivElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.ExpMultDiv");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cLeftAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLeftPrimaryParserRuleCall_0_0 = (RuleCall)cLeftAssignment_0.eContents().get(0);
+		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cOperatorAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cOperatorExpOpParserRuleCall_1_0_0 = (RuleCall)cOperatorAssignment_1_0.eContents().get(0);
-		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cRightExpParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
+		private final Action cExpLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorExpMDParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//Exp:
-		//	left=Primary (operator=ExpOp right=Exp)?;
+		//ExpMultDiv:
+		//	Primary ({Exp.left=current} operator=ExpMD right=Primary)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// Illegal due to left recursion if "left=Exp"
-		//left=Primary (operator=ExpOp right=Exp)?
+		//Primary ({Exp.left=current} operator=ExpMD right=Primary)*
 		public Group getGroup() { return cGroup; }
 		
-		//// Illegal due to left recursion if "left=Exp"
-		//left=Primary
-		public Assignment getLeftAssignment_0() { return cLeftAssignment_0; }
-		
 		//Primary
-		public RuleCall getLeftPrimaryParserRuleCall_0_0() { return cLeftPrimaryParserRuleCall_0_0; }
+		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//(operator=ExpOp right=Exp)?
+		//({Exp.left=current} operator=ExpMD right=Primary)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//operator=ExpOp
-		public Assignment getOperatorAssignment_1_0() { return cOperatorAssignment_1_0; }
+		//{Exp.left=current}
+		public Action getExpLeftAction_1_0() { return cExpLeftAction_1_0; }
 		
-		//ExpOp
-		public RuleCall getOperatorExpOpParserRuleCall_1_0_0() { return cOperatorExpOpParserRuleCall_1_0_0; }
+		//operator=ExpMD
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
 		
-		//right=Exp
-		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
+		//ExpMD
+		public RuleCall getOperatorExpMDParserRuleCall_1_1_0() { return cOperatorExpMDParserRuleCall_1_1_0; }
 		
-		//Exp
-		public RuleCall getRightExpParserRuleCall_1_1_0() { return cRightExpParserRuleCall_1_1_0; }
+		//right=Primary
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//Primary
+		public RuleCall getRightPrimaryParserRuleCall_1_2_0() { return cRightPrimaryParserRuleCall_1_2_0; }
 	}
-	public class ExpOpElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.ExpOp");
+	public class ExpMinusPlusElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.ExpMinusPlus");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cExpMultDivParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cExpMinusPlusLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorExpPMParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpMultDivParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//ExpMinusPlus:
+		//	ExpMultDiv ({ExpMinusPlus.left=current} operator=ExpPM right=ExpMultDiv)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ExpMultDiv ({ExpMinusPlus.left=current} operator=ExpPM right=ExpMultDiv)*
+		public Group getGroup() { return cGroup; }
+		
+		//ExpMultDiv
+		public RuleCall getExpMultDivParserRuleCall_0() { return cExpMultDivParserRuleCall_0; }
+		
+		//({ExpMinusPlus.left=current} operator=ExpPM right=ExpMultDiv)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ExpMinusPlus.left=current}
+		public Action getExpMinusPlusLeftAction_1_0() { return cExpMinusPlusLeftAction_1_0; }
+		
+		//operator=ExpPM
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//ExpPM
+		public RuleCall getOperatorExpPMParserRuleCall_1_1_0() { return cOperatorExpPMParserRuleCall_1_1_0; }
+		
+		//right=ExpMultDiv
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//ExpMultDiv
+		public RuleCall getRightExpMultDivParserRuleCall_1_2_0() { return cRightExpMultDivParserRuleCall_1_2_0; }
+	}
+	public class ExpPMElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.ExpPM");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cPlusAction_0_0 = (Action)cGroup_0.eContents().get(0);
@@ -100,18 +152,12 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cMinusAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cMultAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cAsteriskKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cDivAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Keyword cSolidusKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		
-		//ExpOp:
-		//	{Plus} '+' | {Minus} '-' | {Mult} '*' | {Div} '/';
+		//ExpPM:
+		//	{Plus} '+' | {Minus} '-';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Plus} '+' | {Minus} '-' | {Mult} '*' | {Div} '/'
+		//{Plus} '+' | {Minus} '-'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{Plus} '+'
@@ -131,24 +177,41 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'-'
 		public Keyword getHyphenMinusKeyword_1_1() { return cHyphenMinusKeyword_1_1; }
+	}
+	public class ExpMDElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.ExpMD");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cMultAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cAsteriskKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cDivAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cSolidusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		
+		//ExpMD:
+		//	{Mult} '*' | {Div} '/';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Mult} '*' | {Div} '/'
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{Mult} '*'
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_0() { return cGroup_0; }
 		
 		//{Mult}
-		public Action getMultAction_2_0() { return cMultAction_2_0; }
+		public Action getMultAction_0_0() { return cMultAction_0_0; }
 		
 		//'*'
-		public Keyword getAsteriskKeyword_2_1() { return cAsteriskKeyword_2_1; }
+		public Keyword getAsteriskKeyword_0_1() { return cAsteriskKeyword_0_1; }
 		
 		//{Div} '/'
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Div}
-		public Action getDivAction_3_0() { return cDivAction_3_0; }
+		public Action getDivAction_1_0() { return cDivAction_1_0; }
 		
 		//'/'
-		public Keyword getSolidusKeyword_3_1() { return cSolidusKeyword_3_1; }
+		public Keyword getSolidusKeyword_1_1() { return cSolidusKeyword_1_1; }
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Assignment2.Primary");
@@ -174,24 +237,24 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cExpAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cExpExpParserRuleCall_1_0 = (RuleCall)cExpAssignment_1.eContents().get(0);
+		private final RuleCall cExpExpMinusPlusParserRuleCall_1_0 = (RuleCall)cExpAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Parenthesis:
-		//	'(' exp=Exp ')';
+		//	'(' exp=ExpMinusPlus ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' exp=Exp ')'
+		//'(' exp=ExpMinusPlus ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 		
-		//exp=Exp
+		//exp=ExpMinusPlus
 		public Assignment getExpAssignment_1() { return cExpAssignment_1; }
 		
-		//Exp
-		public RuleCall getExpExpParserRuleCall_1_0() { return cExpExpParserRuleCall_1_0; }
+		//ExpMinusPlus
+		public RuleCall getExpExpMinusPlusParserRuleCall_1_0() { return cExpExpMinusPlusParserRuleCall_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
@@ -213,9 +276,12 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	private final ModelElements pModel;
 	private final MathExpElements pMathExp;
-	private final ExpElements pExp;
-	private final ExpOpElements pExpOp;
+	private final ExpMultDivElements pExpMultDiv;
+	private final ExpMinusPlusElements pExpMinusPlus;
+	private final ExpPMElements pExpPM;
+	private final ExpMDElements pExpMD;
 	private final PrimaryElements pPrimary;
 	private final ParenthesisElements pParenthesis;
 	private final NumberElements pNumber;
@@ -229,9 +295,12 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
 		this.pMathExp = new MathExpElements();
-		this.pExp = new ExpElements();
-		this.pExpOp = new ExpOpElements();
+		this.pExpMultDiv = new ExpMultDivElements();
+		this.pExpMinusPlus = new ExpMinusPlusElements();
+		this.pExpPM = new ExpPMElements();
+		this.pExpMD = new ExpMDElements();
 		this.pPrimary = new PrimaryElements();
 		this.pParenthesis = new ParenthesisElements();
 		this.pNumber = new NumberElements();
@@ -264,8 +333,18 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//Model:
+	//	math+=MathExp*;
+	public ModelElements getModelAccess() {
+		return pModel;
+	}
+	
+	public ParserRule getModelRule() {
+		return getModelAccess().getRule();
+	}
+	
 	//MathExp:
-	//	'result' 'is' exp=Exp;
+	//	'result' 'is' exp=ExpMinusPlus;
 	public MathExpElements getMathExpAccess() {
 		return pMathExp;
 	}
@@ -274,24 +353,44 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 		return getMathExpAccess().getRule();
 	}
 	
-	//Exp:
-	//	left=Primary (operator=ExpOp right=Exp)?;
-	public ExpElements getExpAccess() {
-		return pExp;
+	//ExpMultDiv:
+	//	Primary ({Exp.left=current} operator=ExpMD right=Primary)*;
+	public ExpMultDivElements getExpMultDivAccess() {
+		return pExpMultDiv;
 	}
 	
-	public ParserRule getExpRule() {
-		return getExpAccess().getRule();
+	public ParserRule getExpMultDivRule() {
+		return getExpMultDivAccess().getRule();
 	}
 	
-	//ExpOp:
-	//	{Plus} '+' | {Minus} '-' | {Mult} '*' | {Div} '/';
-	public ExpOpElements getExpOpAccess() {
-		return pExpOp;
+	//ExpMinusPlus:
+	//	ExpMultDiv ({ExpMinusPlus.left=current} operator=ExpPM right=ExpMultDiv)*;
+	public ExpMinusPlusElements getExpMinusPlusAccess() {
+		return pExpMinusPlus;
 	}
 	
-	public ParserRule getExpOpRule() {
-		return getExpOpAccess().getRule();
+	public ParserRule getExpMinusPlusRule() {
+		return getExpMinusPlusAccess().getRule();
+	}
+	
+	//ExpPM:
+	//	{Plus} '+' | {Minus} '-';
+	public ExpPMElements getExpPMAccess() {
+		return pExpPM;
+	}
+	
+	public ParserRule getExpPMRule() {
+		return getExpPMAccess().getRule();
+	}
+	
+	//ExpMD:
+	//	{Mult} '*' | {Div} '/';
+	public ExpMDElements getExpMDAccess() {
+		return pExpMD;
+	}
+	
+	public ParserRule getExpMDRule() {
+		return getExpMDAccess().getRule();
 	}
 	
 	//Primary:
@@ -305,7 +404,7 @@ public class Assignment2GrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Parenthesis:
-	//	'(' exp=Exp ')';
+	//	'(' exp=ExpMinusPlus ')';
 	public ParenthesisElements getParenthesisAccess() {
 		return pParenthesis;
 	}

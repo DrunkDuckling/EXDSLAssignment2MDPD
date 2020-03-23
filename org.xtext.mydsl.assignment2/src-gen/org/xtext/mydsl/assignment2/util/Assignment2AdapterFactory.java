@@ -13,9 +13,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.xtext.mydsl.assignment2.Assignment2Package;
 import org.xtext.mydsl.assignment2.Div;
 import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpOp;
+import org.xtext.mydsl.assignment2.ExpMD;
+import org.xtext.mydsl.assignment2.ExpMinusPlus;
+import org.xtext.mydsl.assignment2.ExpMultDiv;
+import org.xtext.mydsl.assignment2.ExpPM;
 import org.xtext.mydsl.assignment2.MathExp;
 import org.xtext.mydsl.assignment2.Minus;
+import org.xtext.mydsl.assignment2.Model;
 import org.xtext.mydsl.assignment2.Mult;
 import org.xtext.mydsl.assignment2.Parenthesis;
 import org.xtext.mydsl.assignment2.Plus;
@@ -85,19 +89,34 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
     new Assignment2Switch<Adapter>()
     {
       @Override
+      public Adapter caseModel(Model object)
+      {
+        return createModelAdapter();
+      }
+      @Override
       public Adapter caseMathExp(MathExp object)
       {
         return createMathExpAdapter();
       }
       @Override
-      public Adapter caseExp(Exp object)
+      public Adapter caseExpMultDiv(ExpMultDiv object)
       {
-        return createExpAdapter();
+        return createExpMultDivAdapter();
       }
       @Override
-      public Adapter caseExpOp(ExpOp object)
+      public Adapter caseExpMinusPlus(ExpMinusPlus object)
       {
-        return createExpOpAdapter();
+        return createExpMinusPlusAdapter();
+      }
+      @Override
+      public Adapter caseExpPM(ExpPM object)
+      {
+        return createExpPMAdapter();
+      }
+      @Override
+      public Adapter caseExpMD(ExpMD object)
+      {
+        return createExpMDAdapter();
       }
       @Override
       public Adapter casePrimary(Primary object)
@@ -113,6 +132,11 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
       public Adapter caseNumber(org.xtext.mydsl.assignment2.Number object)
       {
         return createNumberAdapter();
+      }
+      @Override
+      public Adapter caseExp(Exp object)
+      {
+        return createExpAdapter();
       }
       @Override
       public Adapter casePlus(Plus object)
@@ -157,6 +181,21 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
 
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Model <em>Model</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.Model
+   * @generated
+   */
+  public Adapter createModelAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.MathExp <em>Math Exp</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -172,31 +211,61 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Exp <em>Exp</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpMultDiv <em>Exp Mult Div</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.Exp
+   * @see org.xtext.mydsl.assignment2.ExpMultDiv
    * @generated
    */
-  public Adapter createExpAdapter()
+  public Adapter createExpMultDivAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpOp <em>Exp Op</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpMinusPlus <em>Exp Minus Plus</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.ExpOp
+   * @see org.xtext.mydsl.assignment2.ExpMinusPlus
    * @generated
    */
-  public Adapter createExpOpAdapter()
+  public Adapter createExpMinusPlusAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpPM <em>Exp PM</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.ExpPM
+   * @generated
+   */
+  public Adapter createExpPMAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpMD <em>Exp MD</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.ExpMD
+   * @generated
+   */
+  public Adapter createExpMDAdapter()
   {
     return null;
   }
@@ -242,6 +311,21 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNumberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Exp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.Exp
+   * @generated
+   */
+  public Adapter createExpAdapter()
   {
     return null;
   }

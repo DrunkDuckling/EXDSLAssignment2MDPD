@@ -15,7 +15,7 @@ import org.xtext.mydsl.assignment2.Mult;
  *
  * @generated
  */
-public class MultImpl extends ExpOpImpl implements Mult
+public class MultImpl extends ExpMDImpl implements Mult
 {
   /**
    * <!-- begin-user-doc -->

@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.mydsl.assignment2.Assignment2Package;
-import org.xtext.mydsl.assignment2.Exp;
+import org.xtext.mydsl.assignment2.ExpMinusPlus;
 import org.xtext.mydsl.assignment2.MathExp;
 
 /**
@@ -39,7 +39,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    * @ordered
    */
-  protected Exp exp;
+  protected ExpMinusPlus exp;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    */
   @Override
-  public Exp getExp()
+  public ExpMinusPlus getExp()
   {
     return exp;
   }
@@ -78,9 +78,9 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExp(Exp newExp, NotificationChain msgs)
+  public NotificationChain basicSetExp(ExpMinusPlus newExp, NotificationChain msgs)
   {
-    Exp oldExp = exp;
+    ExpMinusPlus oldExp = exp;
     exp = newExp;
     if (eNotificationRequired())
     {
@@ -96,7 +96,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    */
   @Override
-  public void setExp(Exp newExp)
+  public void setExp(ExpMinusPlus newExp)
   {
     if (newExp != exp)
     {
@@ -155,7 +155,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
     switch (featureID)
     {
       case Assignment2Package.MATH_EXP__EXP:
-        setExp((Exp)newValue);
+        setExp((ExpMinusPlus)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,7 +172,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
     switch (featureID)
     {
       case Assignment2Package.MATH_EXP__EXP:
-        setExp((Exp)null);
+        setExp((ExpMinusPlus)null);
         return;
     }
     super.eUnset(featureID);

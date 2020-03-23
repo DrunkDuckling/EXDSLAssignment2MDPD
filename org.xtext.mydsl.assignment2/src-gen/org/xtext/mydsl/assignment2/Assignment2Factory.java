@@ -24,6 +24,15 @@ public interface Assignment2Factory extends EFactory
   Assignment2Factory eINSTANCE = org.xtext.mydsl.assignment2.impl.Assignment2FactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Model</em>'.
+   * @generated
+   */
+  Model createModel();
+
+  /**
    * Returns a new object of class '<em>Math Exp</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -33,22 +42,40 @@ public interface Assignment2Factory extends EFactory
   MathExp createMathExp();
 
   /**
-   * Returns a new object of class '<em>Exp</em>'.
+   * Returns a new object of class '<em>Exp Mult Div</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp</em>'.
+   * @return a new object of class '<em>Exp Mult Div</em>'.
    * @generated
    */
-  Exp createExp();
+  ExpMultDiv createExpMultDiv();
 
   /**
-   * Returns a new object of class '<em>Exp Op</em>'.
+   * Returns a new object of class '<em>Exp Minus Plus</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp Op</em>'.
+   * @return a new object of class '<em>Exp Minus Plus</em>'.
    * @generated
    */
-  ExpOp createExpOp();
+  ExpMinusPlus createExpMinusPlus();
+
+  /**
+   * Returns a new object of class '<em>Exp PM</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exp PM</em>'.
+   * @generated
+   */
+  ExpPM createExpPM();
+
+  /**
+   * Returns a new object of class '<em>Exp MD</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exp MD</em>'.
+   * @generated
+   */
+  ExpMD createExpMD();
 
   /**
    * Returns a new object of class '<em>Primary</em>'.
@@ -76,6 +103,15 @@ public interface Assignment2Factory extends EFactory
    * @generated
    */
   Number createNumber();
+
+  /**
+   * Returns a new object of class '<em>Exp</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exp</em>'.
+   * @generated
+   */
+  Exp createExp();
 
   /**
    * Returns a new object of class '<em>Plus</em>'.

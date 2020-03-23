@@ -5,8 +5,6 @@ package org.xtext.mydsl.assignment2.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.xtext.mydsl.assignment2.Assignment2Package;
 import org.xtext.mydsl.assignment2.Primary;
 
@@ -17,7 +15,7 @@ import org.xtext.mydsl.assignment2.Primary;
  *
  * @generated
  */
-public class PrimaryImpl extends MinimalEObjectImpl.Container implements Primary
+public class PrimaryImpl extends ExpMultDivImpl implements Primary
 {
   /**
    * <!-- begin-user-doc -->

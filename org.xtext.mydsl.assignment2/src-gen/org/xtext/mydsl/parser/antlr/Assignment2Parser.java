@@ -27,7 +27,7 @@ public class Assignment2Parser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "MathExp";
+		return "Model";
 	}
 
 	public Assignment2GrammarAccess getGrammarAccess() {

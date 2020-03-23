@@ -15,7 +15,7 @@ import org.xtext.mydsl.assignment2.Minus;
  *
  * @generated
  */
-public class MinusImpl extends ExpOpImpl implements Minus
+public class MinusImpl extends ExpPMImpl implements Minus
 {
   /**
    * <!-- begin-user-doc -->

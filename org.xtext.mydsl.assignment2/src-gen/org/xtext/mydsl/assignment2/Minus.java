@@ -14,6 +14,6 @@ package org.xtext.mydsl.assignment2;
  * @model
  * @generated
  */
-public interface Minus extends ExpOp
+public interface Minus extends ExpPM
 {
 } // Minus

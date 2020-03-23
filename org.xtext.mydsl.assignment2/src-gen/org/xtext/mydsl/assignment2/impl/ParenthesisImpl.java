@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.mydsl.assignment2.Assignment2Package;
-import org.xtext.mydsl.assignment2.Exp;
+import org.xtext.mydsl.assignment2.ExpMinusPlus;
 import org.xtext.mydsl.assignment2.Parenthesis;
 
 /**
@@ -38,7 +38,7 @@ public class ParenthesisImpl extends PrimaryImpl implements Parenthesis
    * @generated
    * @ordered
    */
-  protected Exp exp;
+  protected ExpMinusPlus exp;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class ParenthesisImpl extends PrimaryImpl implements Parenthesis
    * @generated
    */
   @Override
-  public Exp getExp()
+  public ExpMinusPlus getExp()
   {
     return exp;
   }
@@ -77,9 +77,9 @@ public class ParenthesisImpl extends PrimaryImpl implements Parenthesis
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExp(Exp newExp, NotificationChain msgs)
+  public NotificationChain basicSetExp(ExpMinusPlus newExp, NotificationChain msgs)
   {
-    Exp oldExp = exp;
+    ExpMinusPlus oldExp = exp;
     exp = newExp;
     if (eNotificationRequired())
     {
@@ -95,7 +95,7 @@ public class ParenthesisImpl extends PrimaryImpl implements Parenthesis
    * @generated
    */
   @Override
-  public void setExp(Exp newExp)
+  public void setExp(ExpMinusPlus newExp)
   {
     if (newExp != exp)
     {
@@ -154,7 +154,7 @@ public class ParenthesisImpl extends PrimaryImpl implements Parenthesis
     switch (featureID)
     {
       case Assignment2Package.PARENTHESIS__EXP:
-        setExp((Exp)newValue);
+        setExp((ExpMinusPlus)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,7 +171,7 @@ public class ParenthesisImpl extends PrimaryImpl implements Parenthesis
     switch (featureID)
     {
       case Assignment2Package.PARENTHESIS__EXP:
-        setExp((Exp)null);
+        setExp((ExpMinusPlus)null);
         return;
     }
     super.eUnset(featureID);

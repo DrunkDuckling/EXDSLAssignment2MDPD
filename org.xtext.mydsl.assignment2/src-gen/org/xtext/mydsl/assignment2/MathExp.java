@@ -28,12 +28,12 @@ public interface MathExp extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Exp</em>' containment reference.
-   * @see #setExp(Exp)
+   * @see #setExp(ExpMinusPlus)
    * @see org.xtext.mydsl.assignment2.Assignment2Package#getMathExp_Exp()
    * @model containment="true"
    * @generated
    */
-  Exp getExp();
+  ExpMinusPlus getExp();
 
   /**
    * Sets the value of the '{@link org.xtext.mydsl.assignment2.MathExp#getExp <em>Exp</em>}' containment reference.
@@ -43,6 +43,6 @@ public interface MathExp extends EObject
    * @see #getExp()
    * @generated
    */
-  void setExp(Exp value);
+  void setExp(ExpMinusPlus value);
 
 } // MathExp

@@ -15,7 +15,7 @@ import org.xtext.mydsl.assignment2.Plus;
  *
  * @generated
  */
-public class PlusImpl extends ExpOpImpl implements Plus
+public class PlusImpl extends ExpPMImpl implements Plus
 {
   /**
    * <!-- begin-user-doc -->

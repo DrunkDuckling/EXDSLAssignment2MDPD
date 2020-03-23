@@ -3,7 +3,6 @@
  */
 package org.xtext.mydsl.assignment2;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Primary extends EObject
+public interface Primary extends ExpMultDiv
 {
 } // Primary

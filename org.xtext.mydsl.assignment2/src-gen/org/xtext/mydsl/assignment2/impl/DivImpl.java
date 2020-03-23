@@ -15,7 +15,7 @@ import org.xtext.mydsl.assignment2.Div;
  *
  * @generated
  */
-public class DivImpl extends ExpOpImpl implements Div
+public class DivImpl extends ExpMDImpl implements Div
 {
   /**
    * <!-- begin-user-doc -->

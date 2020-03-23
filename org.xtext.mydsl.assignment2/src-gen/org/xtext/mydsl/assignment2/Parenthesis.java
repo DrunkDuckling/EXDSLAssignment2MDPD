@@ -27,12 +27,12 @@ public interface Parenthesis extends Primary
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Exp</em>' containment reference.
-   * @see #setExp(Exp)
+   * @see #setExp(ExpMinusPlus)
    * @see org.xtext.mydsl.assignment2.Assignment2Package#getParenthesis_Exp()
    * @model containment="true"
    * @generated
    */
-  Exp getExp();
+  ExpMinusPlus getExp();
 
   /**
    * Sets the value of the '{@link org.xtext.mydsl.assignment2.Parenthesis#getExp <em>Exp</em>}' containment reference.
@@ -42,6 +42,6 @@ public interface Parenthesis extends Primary
    * @see #getExp()
    * @generated
    */
-  void setExp(Exp value);
+  void setExp(ExpMinusPlus value);
 
 } // Parenthesis

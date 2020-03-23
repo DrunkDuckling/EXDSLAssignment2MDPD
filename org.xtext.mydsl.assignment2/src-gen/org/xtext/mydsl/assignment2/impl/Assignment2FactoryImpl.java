@@ -15,9 +15,13 @@ import org.xtext.mydsl.assignment2.Assignment2Factory;
 import org.xtext.mydsl.assignment2.Assignment2Package;
 import org.xtext.mydsl.assignment2.Div;
 import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpOp;
+import org.xtext.mydsl.assignment2.ExpMD;
+import org.xtext.mydsl.assignment2.ExpMinusPlus;
+import org.xtext.mydsl.assignment2.ExpMultDiv;
+import org.xtext.mydsl.assignment2.ExpPM;
 import org.xtext.mydsl.assignment2.MathExp;
 import org.xtext.mydsl.assignment2.Minus;
+import org.xtext.mydsl.assignment2.Model;
 import org.xtext.mydsl.assignment2.Mult;
 import org.xtext.mydsl.assignment2.Parenthesis;
 import org.xtext.mydsl.assignment2.Plus;
@@ -75,12 +79,16 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
   {
     switch (eClass.getClassifierID())
     {
+      case Assignment2Package.MODEL: return createModel();
       case Assignment2Package.MATH_EXP: return createMathExp();
-      case Assignment2Package.EXP: return createExp();
-      case Assignment2Package.EXP_OP: return createExpOp();
+      case Assignment2Package.EXP_MULT_DIV: return createExpMultDiv();
+      case Assignment2Package.EXP_MINUS_PLUS: return createExpMinusPlus();
+      case Assignment2Package.EXP_PM: return createExpPM();
+      case Assignment2Package.EXP_MD: return createExpMD();
       case Assignment2Package.PRIMARY: return createPrimary();
       case Assignment2Package.PARENTHESIS: return createParenthesis();
       case Assignment2Package.NUMBER: return createNumber();
+      case Assignment2Package.EXP: return createExp();
       case Assignment2Package.PLUS: return createPlus();
       case Assignment2Package.MINUS: return createMinus();
       case Assignment2Package.MULT: return createMult();
@@ -88,6 +96,18 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Model createModel()
+  {
+    ModelImpl model = new ModelImpl();
+    return model;
   }
 
   /**
@@ -108,10 +128,10 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
    * @generated
    */
   @Override
-  public Exp createExp()
+  public ExpMultDiv createExpMultDiv()
   {
-    ExpImpl exp = new ExpImpl();
-    return exp;
+    ExpMultDivImpl expMultDiv = new ExpMultDivImpl();
+    return expMultDiv;
   }
 
   /**
@@ -120,10 +140,34 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
    * @generated
    */
   @Override
-  public ExpOp createExpOp()
+  public ExpMinusPlus createExpMinusPlus()
   {
-    ExpOpImpl expOp = new ExpOpImpl();
-    return expOp;
+    ExpMinusPlusImpl expMinusPlus = new ExpMinusPlusImpl();
+    return expMinusPlus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExpPM createExpPM()
+  {
+    ExpPMImpl expPM = new ExpPMImpl();
+    return expPM;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExpMD createExpMD()
+  {
+    ExpMDImpl expMD = new ExpMDImpl();
+    return expMD;
   }
 
   /**
@@ -160,6 +204,18 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
   {
     NumberImpl number = new NumberImpl();
     return number;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Exp createExp()
+  {
+    ExpImpl exp = new ExpImpl();
+    return exp;
   }
 
   /**

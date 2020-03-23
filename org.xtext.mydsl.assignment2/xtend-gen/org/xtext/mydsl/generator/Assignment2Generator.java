@@ -5,18 +5,19 @@ package org.xtext.mydsl.generator;
 
 import com.google.common.collect.Iterators;
 import java.util.Arrays;
+import java.util.function.Consumer;
 import javax.swing.JOptionPane;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.xtext.mydsl.assignment2.Div;
-import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpOp;
+import org.xtext.mydsl.assignment2.ExpMinusPlus;
+import org.xtext.mydsl.assignment2.ExpMultDiv;
 import org.xtext.mydsl.assignment2.MathExp;
-import org.xtext.mydsl.assignment2.Minus;
+import org.xtext.mydsl.assignment2.Model;
 import org.xtext.mydsl.assignment2.Mult;
+import org.xtext.mydsl.assignment2.Parenthesis;
 import org.xtext.mydsl.assignment2.Plus;
 import org.xtext.mydsl.assignment2.Primary;
 
@@ -29,115 +30,98 @@ import org.xtext.mydsl.assignment2.Primary;
 public class Assignment2Generator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    final MathExp math = Iterators.<MathExp>filter(resource.getAllContents(), MathExp.class).next();
-    final int result = this.compute(math);
-    CharSequence _display = this.display(math);
-    String _plus = ("Math expression = " + _display);
-    System.out.println(_plus);
+    final Consumer<MathExp> _function = (MathExp it) -> {
+      this.compute(it);
+    };
+    Iterators.<Model>filter(resource.getAllContents(), Model.class).next().getMath().forEach(_function);
+  }
+  
+  public void compute(final MathExp math) {
+    final int result = this.computeExpression(math.getExp());
     JOptionPane.showMessageDialog(null, ("result = " + Integer.valueOf(result)), "Math Language", JOptionPane.INFORMATION_MESSAGE);
   }
   
-  public int compute(final MathExp math) {
-    return this.computeExp(math.getExp());
+  public int computeResult(final MathExp math) {
+    return this.computeExpression(math.getExp());
   }
   
-  public int computeExp(final Exp exp) {
+  public int computePrim(final Primary factor) {
+    return this.computeInnerPrimary(factor);
+  }
+  
+  protected int _computeExpression(final ExpMinusPlus emp) {
     int _xblockexpression = (int) 0;
     {
-      final int left = this.computePrim(exp.getLeft());
+      final int left = this.computeExpression(emp.getLeft());
+      final int right = this.computeExpression(emp.getRight());
       int _switchResult = (int) 0;
-      ExpOp _operator = exp.getOperator();
+      EObject _operator = emp.getOperator();
       boolean _matched = false;
       if (_operator instanceof Plus) {
         _matched=true;
-        int _computeExp = this.computeExp(exp.getRight());
-        _switchResult = (left + _computeExp);
+        _switchResult = (left + right);
       }
       if (!_matched) {
-        if (_operator instanceof Minus) {
-          _matched=true;
-          int _computeExp = this.computeExp(exp.getRight());
-          _switchResult = (left - _computeExp);
-        }
-      }
-      if (!_matched) {
-        if (_operator instanceof Mult) {
-          _matched=true;
-          int _computeExp = this.computeExp(exp.getRight());
-          _switchResult = (left * _computeExp);
-        }
-      }
-      if (!_matched) {
-        if (_operator instanceof Div) {
-          _matched=true;
-          int _computeExp = this.computeExp(exp.getRight());
-          _switchResult = (left / _computeExp);
-        }
-      }
-      if (!_matched) {
-        _switchResult = left;
+        _switchResult = (left - right);
       }
       _xblockexpression = _switchResult;
     }
     return _xblockexpression;
   }
   
-  public int computePrim(final Primary factor) {
-    return 87;
-  }
-  
-  public CharSequence display(final MathExp math) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Math[");
-    CharSequence _displayExp = this.displayExp(math.getExp());
-    _builder.append(_displayExp);
-    _builder.append("]");
-    return _builder;
-  }
-  
-  public CharSequence displayExp(final Exp exp) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Exp[");
-    CharSequence _displayFactor = this.displayFactor(exp.getLeft());
-    _builder.append(_displayFactor);
-    _builder.append(",");
-    ExpOp _operator = exp.getOperator();
-    String _displayOp = null;
-    if (_operator!=null) {
-      _displayOp=this.displayOp(_operator);
+  protected int _computeExpression(final ExpMultDiv emd) {
+    int _xblockexpression = (int) 0;
+    {
+      final int left = this.computeExpression(emd.getLeft());
+      final int right = this.computeExpression(emd.getRight());
+      int _switchResult = (int) 0;
+      EObject _operator = emd.getOperator();
+      boolean _matched = false;
+      if (_operator instanceof Mult) {
+        _matched=true;
+        _switchResult = (left * right);
+      }
+      if (!_matched) {
+        _switchResult = (left / right);
+      }
+      _xblockexpression = _switchResult;
     }
-    _builder.append(_displayOp);
-    _builder.append(",");
-    Exp _right = exp.getRight();
-    CharSequence _displayExp = null;
-    if (_right!=null) {
-      _displayExp=this.displayExp(_right);
-    }
-    _builder.append(_displayExp);
-    _builder.append("]");
-    return _builder;
+    return _xblockexpression;
   }
   
-  protected String _displayOp(final Plus op) {
-    return "+";
+  protected int _computeExpression(final Primary prim) {
+    return this.computeInnerPrimary(prim);
   }
   
-  protected String _displayOp(final Minus op) {
-    return "-";
+  protected int _computeInnerPrimary(final org.xtext.mydsl.assignment2.Number n) {
+    return n.getValue();
   }
   
-  public CharSequence displayFactor(final Primary primary) {
-    return "?";
+  protected int _computeInnerPrimary(final Parenthesis p) {
+    return this.computeExpression(p.getExp());
   }
   
-  public String displayOp(final ExpOp op) {
-    if (op instanceof Minus) {
-      return _displayOp((Minus)op);
-    } else if (op instanceof Plus) {
-      return _displayOp((Plus)op);
+  public int computeExpression(final ExpMinusPlus prim) {
+    if (prim instanceof Primary) {
+      return _computeExpression((Primary)prim);
+    } else if (prim instanceof ExpMultDiv) {
+      return _computeExpression((ExpMultDiv)prim);
+    } else if (prim != null) {
+      return _computeExpression(prim);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(op).toString());
+        Arrays.<Object>asList(prim).toString());
+    }
+  }
+  
+  public int computeInnerPrimary(final Primary n) {
+    if (n instanceof org.xtext.mydsl.assignment2.Number) {
+      return _computeInnerPrimary((org.xtext.mydsl.assignment2.Number)n);
+    } else if (n instanceof Parenthesis) {
+      return _computeInnerPrimary((Parenthesis)n);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(n).toString());
     }
   }
 }
