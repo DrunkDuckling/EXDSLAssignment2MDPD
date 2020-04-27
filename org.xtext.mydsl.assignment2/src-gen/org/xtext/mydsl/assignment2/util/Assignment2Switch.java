@@ -8,20 +8,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.xtext.mydsl.assignment2.Assignment2Package;
-import org.xtext.mydsl.assignment2.Div;
-import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpMD;
-import org.xtext.mydsl.assignment2.ExpMinusPlus;
-import org.xtext.mydsl.assignment2.ExpMultDiv;
-import org.xtext.mydsl.assignment2.ExpPM;
-import org.xtext.mydsl.assignment2.MathExp;
-import org.xtext.mydsl.assignment2.Minus;
-import org.xtext.mydsl.assignment2.Model;
-import org.xtext.mydsl.assignment2.Mult;
-import org.xtext.mydsl.assignment2.Parenthesis;
-import org.xtext.mydsl.assignment2.Plus;
-import org.xtext.mydsl.assignment2.Primary;
+import org.xtext.mydsl.assignment2.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,70 +87,17 @@ public class Assignment2Switch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case Assignment2Package.EXP_MULT_DIV:
+      case Assignment2Package.EXPRESSION:
       {
-        ExpMultDiv expMultDiv = (ExpMultDiv)theEObject;
-        T result = caseExpMultDiv(expMultDiv);
-        if (result == null) result = caseExpMinusPlus(expMultDiv);
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case Assignment2Package.EXP_MINUS_PLUS:
+      case Assignment2Package.VARIABLE:
       {
-        ExpMinusPlus expMinusPlus = (ExpMinusPlus)theEObject;
-        T result = caseExpMinusPlus(expMinusPlus);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case Assignment2Package.EXP_PM:
-      {
-        ExpPM expPM = (ExpPM)theEObject;
-        T result = caseExpPM(expPM);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case Assignment2Package.EXP_MD:
-      {
-        ExpMD expMD = (ExpMD)theEObject;
-        T result = caseExpMD(expMD);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case Assignment2Package.PRIMARY:
-      {
-        Primary primary = (Primary)theEObject;
-        T result = casePrimary(primary);
-        if (result == null) result = caseExpMultDiv(primary);
-        if (result == null) result = caseExpMinusPlus(primary);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case Assignment2Package.PARENTHESIS:
-      {
-        Parenthesis parenthesis = (Parenthesis)theEObject;
-        T result = caseParenthesis(parenthesis);
-        if (result == null) result = casePrimary(parenthesis);
-        if (result == null) result = caseExpMultDiv(parenthesis);
-        if (result == null) result = caseExpMinusPlus(parenthesis);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case Assignment2Package.NUMBER:
-      {
-        org.xtext.mydsl.assignment2.Number number = (org.xtext.mydsl.assignment2.Number)theEObject;
-        T result = caseNumber(number);
-        if (result == null) result = casePrimary(number);
-        if (result == null) result = caseExpMultDiv(number);
-        if (result == null) result = caseExpMinusPlus(number);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case Assignment2Package.EXP:
-      {
-        Exp exp = (Exp)theEObject;
-        T result = caseExp(exp);
-        if (result == null) result = caseExpMultDiv(exp);
-        if (result == null) result = caseExpMinusPlus(exp);
+        Variable variable = (Variable)theEObject;
+        T result = caseVariable(variable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,7 +105,7 @@ public class Assignment2Switch<T> extends Switch<T>
       {
         Plus plus = (Plus)theEObject;
         T result = casePlus(plus);
-        if (result == null) result = caseExpPM(plus);
+        if (result == null) result = caseExpression(plus);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -179,7 +113,7 @@ public class Assignment2Switch<T> extends Switch<T>
       {
         Minus minus = (Minus)theEObject;
         T result = caseMinus(minus);
-        if (result == null) result = caseExpPM(minus);
+        if (result == null) result = caseExpression(minus);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -187,7 +121,7 @@ public class Assignment2Switch<T> extends Switch<T>
       {
         Mult mult = (Mult)theEObject;
         T result = caseMult(mult);
-        if (result == null) result = caseExpMD(mult);
+        if (result == null) result = caseExpression(mult);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -195,7 +129,31 @@ public class Assignment2Switch<T> extends Switch<T>
       {
         Div div = (Div)theEObject;
         T result = caseDiv(div);
-        if (result == null) result = caseExpMD(div);
+        if (result == null) result = caseExpression(div);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Assignment2Package.VAR:
+      {
+        Var var = (Var)theEObject;
+        T result = caseVar(var);
+        if (result == null) result = caseExpression(var);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Assignment2Package.LET:
+      {
+        Let let = (Let)theEObject;
+        T result = caseLet(let);
+        if (result == null) result = caseExpression(let);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Assignment2Package.NUM:
+      {
+        Num num = (Num)theEObject;
+        T result = caseNum(num);
+        if (result == null) result = caseExpression(num);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -236,129 +194,33 @@ public class Assignment2Switch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Exp Mult Div</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exp Mult Div</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseExpMultDiv(ExpMultDiv object)
+  public T caseExpression(Expression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Exp Minus Plus</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exp Minus Plus</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseExpMinusPlus(ExpMinusPlus object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Exp PM</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exp PM</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExpPM(ExpPM object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Exp MD</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exp MD</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExpMD(ExpMD object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Primary</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Primary</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePrimary(Primary object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParenthesis(Parenthesis object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Number</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Number</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNumber(org.xtext.mydsl.assignment2.Number object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Exp</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Exp</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExp(Exp object)
+  public T caseVariable(Variable object)
   {
     return null;
   }
@@ -423,6 +285,54 @@ public class Assignment2Switch<T> extends Switch<T>
    * @generated
    */
   public T caseDiv(Div object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Var</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Var</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVar(Var object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Let</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Let</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLet(Let object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Num</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Num</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNum(Num object)
   {
     return null;
   }

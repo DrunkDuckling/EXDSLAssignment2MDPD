@@ -7,30 +7,42 @@
   <genPackages prefix="Assignment2" basePackage="org.xtext.mydsl" disposableProviderFactory="true"
       fileExtensions="m_3" ecorePackage="Assignment2.ecore#/">
     <genClasses ecoreClass="Assignment2.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Model/math"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Model/mathexp"/>
     </genClasses>
     <genClasses ecoreClass="Assignment2.ecore#//MathExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Assignment2.ecore#//MathExp/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//MathExp/exp"/>
     </genClasses>
-    <genClasses ecoreClass="Assignment2.ecore#//ExpMultDiv"/>
-    <genClasses ecoreClass="Assignment2.ecore#//ExpMinusPlus">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//ExpMinusPlus/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//ExpMinusPlus/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//ExpMinusPlus/right"/>
+    <genClasses ecoreClass="Assignment2.ecore#//Expression"/>
+    <genClasses ecoreClass="Assignment2.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Assignment2.ecore#//Variable/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Variable/binding"/>
     </genClasses>
-    <genClasses ecoreClass="Assignment2.ecore#//ExpPM"/>
-    <genClasses ecoreClass="Assignment2.ecore#//ExpMD"/>
-    <genClasses ecoreClass="Assignment2.ecore#//Primary"/>
-    <genClasses ecoreClass="Assignment2.ecore#//Parenthesis">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Parenthesis/exp"/>
+    <genClasses ecoreClass="Assignment2.ecore#//Plus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Plus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Plus/right"/>
     </genClasses>
-    <genClasses ecoreClass="Assignment2.ecore#//Number">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Assignment2.ecore#//Number/value"/>
+    <genClasses ecoreClass="Assignment2.ecore#//Minus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Minus/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Minus/right"/>
     </genClasses>
-    <genClasses ecoreClass="Assignment2.ecore#//Exp"/>
-    <genClasses ecoreClass="Assignment2.ecore#//Plus"/>
-    <genClasses ecoreClass="Assignment2.ecore#//Minus"/>
-    <genClasses ecoreClass="Assignment2.ecore#//Mult"/>
-    <genClasses ecoreClass="Assignment2.ecore#//Div"/>
+    <genClasses ecoreClass="Assignment2.ecore#//Mult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Mult/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Mult/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Assignment2.ecore#//Div">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Div/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Div/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Assignment2.ecore#//Var">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Assignment2.ecore#//Var/id"/>
+    </genClasses>
+    <genClasses ecoreClass="Assignment2.ecore#//Let">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Let/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Assignment2.ecore#//Let/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Assignment2.ecore#//Num">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Assignment2.ecore#//Num/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -3,75 +3,167 @@
  */
 package org.xtext.mydsl.generator
 
+import java.util.HashMap
+import java.util.Map
 import javax.swing.JOptionPane
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.mydsl.assignment2.Div
-import org.xtext.mydsl.assignment2.Exp
-import org.xtext.mydsl.assignment2.MathExp
+import org.xtext.mydsl.assignment2.Expression
 import org.xtext.mydsl.assignment2.Minus
 import org.xtext.mydsl.assignment2.Mult
+import org.xtext.mydsl.assignment2.Num
 import org.xtext.mydsl.assignment2.Plus
-import org.xtext.mydsl.assignment2.Primary
+import org.xtext.mydsl.assignment2.Var
+import org.xtext.mydsl.assignment2.MathExp
 import org.xtext.mydsl.assignment2.Model
-import org.xtext.mydsl.assignment2.Parenthesis
-import org.xtext.mydsl.assignment2.Number
-import org.xtext.mydsl.assignment2.ExpMinusPlus
-import org.xtext.mydsl.assignment2.ExpMultDiv
+import java.util.List
+import org.xtext.mydsl.assignment2.Let
+import org.xtext.mydsl.assignment2.Variable
 
-/**
- * Generates code from your model files on save.
- * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
- */
 class Assignment2Generator extends AbstractGenerator {
 
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		resource.allContents.filter(Model).next.math.forEach[compute]
+		
+		// Gets the Model from xtext and creates an Iterable list
+		val model = resource.allContents.filter(Model).next;
+		
+//		Goes though each result and does the magic; Used for testing
+//		for(test: model.mathexp){
+//			val result = test.compute
+//			System.out.println("Math expression = "+test.display)
+//			JOptionPane.showMessageDialog(null, "result = "+result,"Math Language", JOptionPane.INFORMATION_MESSAGE)
+//		}
+		// Generates the .java file and uses the method as content
+		fsa.generateFile(String.format("%s/" +  "MathComputation.java", "code"),
+        	generateMathComputation(model.mathexp)
+    	);
+			
 	}
 	
-	def void compute(MathExp math) {
-		val result = math.exp.computeExpression
-		JOptionPane.showMessageDialog(null, "result = "+result,"Math Language", JOptionPane.INFORMATION_MESSAGE)
+	// Generates the string needed in the file. 
+	private def String generateMathComputation(Iterable<MathExp> math){
+		return '''
+		import java.lang.Math; 
+		
+		public class MathComputation {
+		    // BEGIN: required for external functions
+		    public static interface Externals {
+		    	public int Math.pow(int base, int exponent);
+		    }
+		    private static Externals externals;
+		
+		    public MathComputation(Externals _externals) {
+		    	externals = _externals;
+		    }
+		    // END: required for external functions
+		
+		    public static void main(String[] args) {
+		    	
+	    	    «FOR mat: math»
+		      	   «generatePrints(mat)»
+		        «ENDFOR»
+		      	// BEGIN: external functions only
+		      	// System.out.println("external example " + (externals.power(2, 6)));
+		      	// END: external functions only
+		    }
+		
+		    public void compute() {
+		      
+		    }
+		  }
+		''';
 	}
 	
-	def int computeResult(MathExp math) {
-		math.exp.computeExpression
-	}
-	
-	def int computePrim(Primary factor) { 
-		factor.computeInnerPrimary
-	}
-	
-	// If the Expression contains Plus or Minus
-	def dispatch int computeExpression(ExpMinusPlus emp){
-		// Values containing the numbers
-		val left = emp.left.computeExpression
-		val right = emp.right.computeExpression
-		// Switch: For the operators
-		switch(emp.operator){
-			Plus: left+right
-			// default = Minus (It gets cranky if there is no default)
-			default: left-right
+	// Method that goes though the Variable List and creates the strings corresponding to the Expression
+	private def String generatePrints(MathExp math){
+		val exp = math.exp;
+		
+		if(math.name != null){
+			return'''
+			
+				int «math.name» = «math.compute»;
+				System.out.println("«math.name»: " + "is " +  «math.compute»);
+			''';
+		}else if (exp instanceof Let){
+			return '''
+			
+				«FOR let: exp.variable»
+				int «let.id» = «let.binding.displayExp»;
+				«ENDFOR»
+				«FOR let: exp.variable»
+				System.out.println("«let.id»" + " Defined as: " + "«let.binding.displayExp»");
+				«ENDFOR»
+				System.out.println("Result of: " +  "«exp.body.displayExp»" + " is: " + «math.compute»);
+			''';
+		}else{
+			return'''
+			
+				System.out.println("Math is: " + "«math.display»" + " - result is: " + «math.compute»);
+			''';	
 		}
 	}
-	// If the Expression contains Mult or Div 
-	def dispatch int computeExpression(ExpMultDiv emd){
-		// Values containing the numbers
-		val left = emd.left.computeExpression
-		val right = emd.right.computeExpression
-		// Switch: For the operators
-		switch(emd.operator){
-			Mult: left*right
-			// default = Div (It gets cranky if there is no default)
-			default: left/right
+	
+	// Middle man; Used to pass the Expression values and Map
+	def int compute(MathExp math) { 
+		math.exp.computeExp(new HashMap<String,Integer>)
+	}
+	// Uses the "return Expression" from xtext. This allows for easier management
+	def int computeExp(Expression exp, Map<String,Integer> env) {
+		switch exp {
+			Plus: exp.left.computeExp(env)+exp.right.computeExp(env)
+			Minus: exp.left.computeExp(env)-exp.right.computeExp(env)
+			Mult: exp.left.computeExp(env)*exp.right.computeExp(env)
+			Div: exp.left.computeExp(env)/exp.right.computeExp(env)
+			Num: exp.value
+			Var: env.get(exp.id)
+//			Let: exp.body.computeExp(env.bind(exp.id,exp.binding.computeExp(env)))
+			// Used newly created method that simply does the same as the old one, but for a list
+			// Old method; still used to calculate old Expressions
+			Let: exp.body.computeExp(env.computeLet(exp.variable))
+			default: throw new Error("Invalid expression")
 		}
 	}
-	// The numbers or parenthesis 
-	def dispatch int computeExpression(Primary prim){prim.computeInnerPrimary}
-	def dispatch int computeInnerPrimary(Number n){n.value}
-	def dispatch int computeInnerPrimary(Parenthesis p){p.exp.computeExpression}
 	
+	
+	// Takes the variable list, and adds them individually into a new Map. This allows for computation
+	def Map<String, Integer> computeLet(Map<String, Integer> env1, List<Variable> let){
+		val env2 = new HashMap<String,Integer>(env1)
+		for(e: let){
+			env2.put(e.id, e.binding.computeExp(env1))
+		}
+		env2
+	}
+	
+	def Map<String, Integer> bind(Map<String, Integer> env1, String name, int value) {
+		val env2 = new HashMap<String,Integer>(env1)
+		env2.put(name,value)
+		env2 
+	}
+	
+	
+	def String display(MathExp math) { 
+		math.exp.displayExp
+	}
+	
+	// Removed "("+ and +")" As there is no need for the illustrative purpose 
+	// Used to display the calculations.
+	def String displayExp(Expression exp) {
+		switch exp {
+			Plus: exp.left.displayExp+"+"+exp.right.displayExp
+			Minus: exp.left.displayExp+"-"+exp.right.displayExp
+			Mult: exp.left.displayExp+"*"+exp.right.displayExp
+			Div: exp.left.displayExp+"/"+exp.right.displayExp
+			Num: Integer.toString(exp.value)
+			Var: exp.id
+//			Let: '''let «exp.id» = «exp.binding.displayExp» in «exp.body.displayExp» end'''
+			Let: '''«FOR let: exp.variable»
+					Let «let.id» = «let.binding.displayExp», in «exp.body.displayExp» end
+				«ENDFOR»'''
+			default: throw new Error("Invalid display expression")
+		}
+	}		
 }

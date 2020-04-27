@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.mydsl.assignment2.MathExp#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.mydsl.assignment2.MathExp#getExp <em>Exp</em>}</li>
  * </ul>
  *
@@ -24,16 +25,38 @@ import org.eclipse.emf.ecore.EObject;
 public interface MathExp extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.xtext.mydsl.assignment2.Assignment2Package#getMathExp_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.xtext.mydsl.assignment2.MathExp#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
    * Returns the value of the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Exp</em>' containment reference.
-   * @see #setExp(ExpMinusPlus)
+   * @see #setExp(Expression)
    * @see org.xtext.mydsl.assignment2.Assignment2Package#getMathExp_Exp()
    * @model containment="true"
    * @generated
    */
-  ExpMinusPlus getExp();
+  Expression getExp();
 
   /**
    * Sets the value of the '{@link org.xtext.mydsl.assignment2.MathExp#getExp <em>Exp</em>}' containment reference.
@@ -43,6 +66,6 @@ public interface MathExp extends EObject
    * @see #getExp()
    * @generated
    */
-  void setExp(ExpMinusPlus value);
+  void setExp(Expression value);
 
 } // MathExp

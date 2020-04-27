@@ -3,35 +3,54 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="assignment2" nsURI="http://www.xtext.org/mydsl/Assignment2"
     nsPrefix="assignment2">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="math" upperBound="-1" eType="#//MathExp"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mathexp" upperBound="-1"
+        eType="#//MathExp" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MathExp">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//ExpMinusPlus"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExpMultDiv" eSuperTypes="#//ExpMinusPlus"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ExpMinusPlus">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ExpMinusPlus"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ExpMultDiv"
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="binding" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExpPM"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ExpMD"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Primary" eSuperTypes="#//ExpMultDiv"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Parenthesis" eSuperTypes="#//Primary">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//ExpMinusPlus"
+  <eClassifiers xsi:type="ecore:EClass" name="Plus" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Number" eSuperTypes="#//Primary">
+  <eClassifiers xsi:type="ecore:EClass" name="Minus" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mult" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Var" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Let" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Num" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Exp" eSuperTypes="#//ExpMultDiv"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Plus" eSuperTypes="#//ExpPM"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Minus" eSuperTypes="#//ExpPM"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Mult" eSuperTypes="#//ExpMD"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//ExpMD"/>
 </ecore:EPackage>

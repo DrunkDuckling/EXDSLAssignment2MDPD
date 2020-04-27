@@ -10,20 +10,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.xtext.mydsl.assignment2.Assignment2Package;
-import org.xtext.mydsl.assignment2.Div;
-import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpMD;
-import org.xtext.mydsl.assignment2.ExpMinusPlus;
-import org.xtext.mydsl.assignment2.ExpMultDiv;
-import org.xtext.mydsl.assignment2.ExpPM;
-import org.xtext.mydsl.assignment2.MathExp;
-import org.xtext.mydsl.assignment2.Minus;
-import org.xtext.mydsl.assignment2.Model;
-import org.xtext.mydsl.assignment2.Mult;
-import org.xtext.mydsl.assignment2.Parenthesis;
-import org.xtext.mydsl.assignment2.Plus;
-import org.xtext.mydsl.assignment2.Primary;
+import org.xtext.mydsl.assignment2.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -99,44 +86,14 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
         return createMathExpAdapter();
       }
       @Override
-      public Adapter caseExpMultDiv(ExpMultDiv object)
+      public Adapter caseExpression(Expression object)
       {
-        return createExpMultDivAdapter();
+        return createExpressionAdapter();
       }
       @Override
-      public Adapter caseExpMinusPlus(ExpMinusPlus object)
+      public Adapter caseVariable(Variable object)
       {
-        return createExpMinusPlusAdapter();
-      }
-      @Override
-      public Adapter caseExpPM(ExpPM object)
-      {
-        return createExpPMAdapter();
-      }
-      @Override
-      public Adapter caseExpMD(ExpMD object)
-      {
-        return createExpMDAdapter();
-      }
-      @Override
-      public Adapter casePrimary(Primary object)
-      {
-        return createPrimaryAdapter();
-      }
-      @Override
-      public Adapter caseParenthesis(Parenthesis object)
-      {
-        return createParenthesisAdapter();
-      }
-      @Override
-      public Adapter caseNumber(org.xtext.mydsl.assignment2.Number object)
-      {
-        return createNumberAdapter();
-      }
-      @Override
-      public Adapter caseExp(Exp object)
-      {
-        return createExpAdapter();
+        return createVariableAdapter();
       }
       @Override
       public Adapter casePlus(Plus object)
@@ -157,6 +114,21 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
       public Adapter caseDiv(Div object)
       {
         return createDivAdapter();
+      }
+      @Override
+      public Adapter caseVar(Var object)
+      {
+        return createVarAdapter();
+      }
+      @Override
+      public Adapter caseLet(Let object)
+      {
+        return createLetAdapter();
+      }
+      @Override
+      public Adapter caseNum(Num object)
+      {
+        return createNumAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -211,121 +183,31 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpMultDiv <em>Exp Mult Div</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.ExpMultDiv
+   * @see org.xtext.mydsl.assignment2.Expression
    * @generated
    */
-  public Adapter createExpMultDivAdapter()
+  public Adapter createExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpMinusPlus <em>Exp Minus Plus</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Variable <em>Variable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.ExpMinusPlus
+   * @see org.xtext.mydsl.assignment2.Variable
    * @generated
    */
-  public Adapter createExpMinusPlusAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpPM <em>Exp PM</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.ExpPM
-   * @generated
-   */
-  public Adapter createExpPMAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.ExpMD <em>Exp MD</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.ExpMD
-   * @generated
-   */
-  public Adapter createExpMDAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Primary <em>Primary</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.Primary
-   * @generated
-   */
-  public Adapter createPrimaryAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Parenthesis <em>Parenthesis</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.Parenthesis
-   * @generated
-   */
-  public Adapter createParenthesisAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Number <em>Number</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.Number
-   * @generated
-   */
-  public Adapter createNumberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Exp <em>Exp</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.mydsl.assignment2.Exp
-   * @generated
-   */
-  public Adapter createExpAdapter()
+  public Adapter createVariableAdapter()
   {
     return null;
   }
@@ -386,6 +268,51 @@ public class Assignment2AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDivAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Var <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.Var
+   * @generated
+   */
+  public Adapter createVarAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Let <em>Let</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.Let
+   * @generated
+   */
+  public Adapter createLetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.assignment2.Num <em>Num</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.mydsl.assignment2.Num
+   * @generated
+   */
+  public Adapter createNumAdapter()
   {
     return null;
   }

@@ -13,18 +13,16 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.xtext.mydsl.assignment2.Assignment2Factory;
 import org.xtext.mydsl.assignment2.Assignment2Package;
 import org.xtext.mydsl.assignment2.Div;
-import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpMD;
-import org.xtext.mydsl.assignment2.ExpMinusPlus;
-import org.xtext.mydsl.assignment2.ExpMultDiv;
-import org.xtext.mydsl.assignment2.ExpPM;
+import org.xtext.mydsl.assignment2.Expression;
+import org.xtext.mydsl.assignment2.Let;
 import org.xtext.mydsl.assignment2.MathExp;
 import org.xtext.mydsl.assignment2.Minus;
 import org.xtext.mydsl.assignment2.Model;
 import org.xtext.mydsl.assignment2.Mult;
-import org.xtext.mydsl.assignment2.Parenthesis;
+import org.xtext.mydsl.assignment2.Num;
 import org.xtext.mydsl.assignment2.Plus;
-import org.xtext.mydsl.assignment2.Primary;
+import org.xtext.mydsl.assignment2.Var;
+import org.xtext.mydsl.assignment2.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,56 +51,14 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass expMultDivEClass = null;
+  private EClass expressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass expMinusPlusEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expPMEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expMDEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass primaryEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass parenthesisEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass numberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expEClass = null;
+  private EClass variableEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -131,6 +87,27 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   private EClass divEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass letEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -212,7 +189,7 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
-  public EReference getModel_Math()
+  public EReference getModel_Mathexp()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
@@ -234,9 +211,20 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
+  public EAttribute getMathExp_Name()
+  {
+    return (EAttribute)mathExpEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getMathExp_Exp()
   {
-    return (EReference)mathExpEClass.getEStructuralFeatures().get(0);
+    return (EReference)mathExpEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -245,9 +233,9 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
-  public EClass getExpMultDiv()
+  public EClass getExpression()
   {
-    return expMultDivEClass;
+    return expressionEClass;
   }
 
   /**
@@ -256,9 +244,9 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
-  public EClass getExpMinusPlus()
+  public EClass getVariable()
   {
-    return expMinusPlusEClass;
+    return variableEClass;
   }
 
   /**
@@ -267,9 +255,9 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
-  public EReference getExpMinusPlus_Left()
+  public EAttribute getVariable_Id()
   {
-    return (EReference)expMinusPlusEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -278,108 +266,9 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
-  public EReference getExpMinusPlus_Operator()
+  public EReference getVariable_Binding()
   {
-    return (EReference)expMinusPlusEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getExpMinusPlus_Right()
-  {
-    return (EReference)expMinusPlusEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getExpPM()
-  {
-    return expPMEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getExpMD()
-  {
-    return expMDEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getPrimary()
-  {
-    return primaryEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getParenthesis()
-  {
-    return parenthesisEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getParenthesis_Exp()
-  {
-    return (EReference)parenthesisEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getNumber()
-  {
-    return numberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getNumber_Value()
-  {
-    return (EAttribute)numberEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getExp()
-  {
-    return expEClass;
+    return (EReference)variableEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -399,9 +288,53 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
+  public EReference getPlus_Left()
+  {
+    return (EReference)plusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPlus_Right()
+  {
+    return (EReference)plusEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getMinus()
   {
     return minusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMinus_Left()
+  {
+    return (EReference)minusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMinus_Right()
+  {
+    return (EReference)minusEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -421,9 +354,130 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
    * @generated
    */
   @Override
+  public EReference getMult_Left()
+  {
+    return (EReference)multEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMult_Right()
+  {
+    return (EReference)multEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getDiv()
   {
     return divEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDiv_Left()
+  {
+    return (EReference)divEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDiv_Right()
+  {
+    return (EReference)divEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVar()
+  {
+    return varEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getVar_Id()
+  {
+    return (EAttribute)varEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLet()
+  {
+    return letEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLet_Variable()
+  {
+    return (EReference)letEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLet_Body()
+  {
+    return (EReference)letEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNum()
+  {
+    return numEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNum_Value()
+  {
+    return (EAttribute)numEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -458,39 +512,43 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__MATH);
+    createEReference(modelEClass, MODEL__MATHEXP);
 
     mathExpEClass = createEClass(MATH_EXP);
+    createEAttribute(mathExpEClass, MATH_EXP__NAME);
     createEReference(mathExpEClass, MATH_EXP__EXP);
 
-    expMultDivEClass = createEClass(EXP_MULT_DIV);
+    expressionEClass = createEClass(EXPRESSION);
 
-    expMinusPlusEClass = createEClass(EXP_MINUS_PLUS);
-    createEReference(expMinusPlusEClass, EXP_MINUS_PLUS__LEFT);
-    createEReference(expMinusPlusEClass, EXP_MINUS_PLUS__OPERATOR);
-    createEReference(expMinusPlusEClass, EXP_MINUS_PLUS__RIGHT);
-
-    expPMEClass = createEClass(EXP_PM);
-
-    expMDEClass = createEClass(EXP_MD);
-
-    primaryEClass = createEClass(PRIMARY);
-
-    parenthesisEClass = createEClass(PARENTHESIS);
-    createEReference(parenthesisEClass, PARENTHESIS__EXP);
-
-    numberEClass = createEClass(NUMBER);
-    createEAttribute(numberEClass, NUMBER__VALUE);
-
-    expEClass = createEClass(EXP);
+    variableEClass = createEClass(VARIABLE);
+    createEAttribute(variableEClass, VARIABLE__ID);
+    createEReference(variableEClass, VARIABLE__BINDING);
 
     plusEClass = createEClass(PLUS);
+    createEReference(plusEClass, PLUS__LEFT);
+    createEReference(plusEClass, PLUS__RIGHT);
 
     minusEClass = createEClass(MINUS);
+    createEReference(minusEClass, MINUS__LEFT);
+    createEReference(minusEClass, MINUS__RIGHT);
 
     multEClass = createEClass(MULT);
+    createEReference(multEClass, MULT__LEFT);
+    createEReference(multEClass, MULT__RIGHT);
 
     divEClass = createEClass(DIV);
+    createEReference(divEClass, DIV__LEFT);
+    createEReference(divEClass, DIV__RIGHT);
+
+    varEClass = createEClass(VAR);
+    createEAttribute(varEClass, VAR__ID);
+
+    letEClass = createEClass(LET);
+    createEReference(letEClass, LET__VARIABLE);
+    createEReference(letEClass, LET__BODY);
+
+    numEClass = createEClass(NUM);
+    createEAttribute(numEClass, NUM__VALUE);
   }
 
   /**
@@ -522,51 +580,53 @@ public class Assignment2PackageImpl extends EPackageImpl implements Assignment2P
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    expMultDivEClass.getESuperTypes().add(this.getExpMinusPlus());
-    primaryEClass.getESuperTypes().add(this.getExpMultDiv());
-    parenthesisEClass.getESuperTypes().add(this.getPrimary());
-    numberEClass.getESuperTypes().add(this.getPrimary());
-    expEClass.getESuperTypes().add(this.getExpMultDiv());
-    plusEClass.getESuperTypes().add(this.getExpPM());
-    minusEClass.getESuperTypes().add(this.getExpPM());
-    multEClass.getESuperTypes().add(this.getExpMD());
-    divEClass.getESuperTypes().add(this.getExpMD());
+    plusEClass.getESuperTypes().add(this.getExpression());
+    minusEClass.getESuperTypes().add(this.getExpression());
+    multEClass.getESuperTypes().add(this.getExpression());
+    divEClass.getESuperTypes().add(this.getExpression());
+    varEClass.getESuperTypes().add(this.getExpression());
+    letEClass.getESuperTypes().add(this.getExpression());
+    numEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Math(), this.getMathExp(), null, "math", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Mathexp(), this.getMathExp(), null, "mathexp", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mathExpEClass, MathExp.class, "MathExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMathExp_Exp(), this.getExpMinusPlus(), null, "exp", null, 0, 1, MathExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMathExp_Name(), ecorePackage.getEString(), "name", null, 0, 1, MathExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMathExp_Exp(), this.getExpression(), null, "exp", null, 0, 1, MathExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(expMultDivEClass, ExpMultDiv.class, "ExpMultDiv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(expMinusPlusEClass, ExpMinusPlus.class, "ExpMinusPlus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExpMinusPlus_Left(), this.getExpMinusPlus(), null, "left", null, 0, 1, ExpMinusPlus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpMinusPlus_Operator(), ecorePackage.getEObject(), null, "operator", null, 0, 1, ExpMinusPlus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpMinusPlus_Right(), this.getExpMultDiv(), null, "right", null, 0, 1, ExpMinusPlus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expPMEClass, ExpPM.class, "ExpPM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(expMDEClass, ExpMD.class, "ExpMD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(primaryEClass, Primary.class, "Primary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(parenthesisEClass, Parenthesis.class, "Parenthesis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParenthesis_Exp(), this.getExpMinusPlus(), null, "exp", null, 0, 1, Parenthesis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(numberEClass, org.xtext.mydsl.assignment2.Number.class, "Number", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNumber_Value(), ecorePackage.getEInt(), "value", null, 0, 1, org.xtext.mydsl.assignment2.Number.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expEClass, Exp.class, "Exp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariable_Binding(), this.getExpression(), null, "binding", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPlus_Left(), this.getExpression(), null, "left", null, 0, 1, Plus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPlus_Right(), this.getExpression(), null, "right", null, 0, 1, Plus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(minusEClass, Minus.class, "Minus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMinus_Left(), this.getExpression(), null, "left", null, 0, 1, Minus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMinus_Right(), this.getExpression(), null, "right", null, 0, 1, Minus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMult_Left(), this.getExpression(), null, "left", null, 0, 1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMult_Right(), this.getExpression(), null, "right", null, 0, 1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(divEClass, Div.class, "Div", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDiv_Left(), this.getExpression(), null, "left", null, 0, 1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDiv_Right(), this.getExpression(), null, "right", null, 0, 1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varEClass, Var.class, "Var", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVar_Id(), ecorePackage.getEString(), "id", null, 0, 1, Var.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(letEClass, Let.class, "Let", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLet_Variable(), this.getVariable(), null, "variable", null, 0, -1, Let.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLet_Body(), this.getExpression(), null, "body", null, 0, 1, Let.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numEClass, Num.class, "Num", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNum_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Num.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

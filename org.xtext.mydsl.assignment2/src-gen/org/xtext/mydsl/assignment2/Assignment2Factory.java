@@ -42,76 +42,22 @@ public interface Assignment2Factory extends EFactory
   MathExp createMathExp();
 
   /**
-   * Returns a new object of class '<em>Exp Mult Div</em>'.
+   * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp Mult Div</em>'.
+   * @return a new object of class '<em>Expression</em>'.
    * @generated
    */
-  ExpMultDiv createExpMultDiv();
+  Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Exp Minus Plus</em>'.
+   * Returns a new object of class '<em>Variable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp Minus Plus</em>'.
+   * @return a new object of class '<em>Variable</em>'.
    * @generated
    */
-  ExpMinusPlus createExpMinusPlus();
-
-  /**
-   * Returns a new object of class '<em>Exp PM</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp PM</em>'.
-   * @generated
-   */
-  ExpPM createExpPM();
-
-  /**
-   * Returns a new object of class '<em>Exp MD</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp MD</em>'.
-   * @generated
-   */
-  ExpMD createExpMD();
-
-  /**
-   * Returns a new object of class '<em>Primary</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary</em>'.
-   * @generated
-   */
-  Primary createPrimary();
-
-  /**
-   * Returns a new object of class '<em>Parenthesis</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parenthesis</em>'.
-   * @generated
-   */
-  Parenthesis createParenthesis();
-
-  /**
-   * Returns a new object of class '<em>Number</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Number</em>'.
-   * @generated
-   */
-  Number createNumber();
-
-  /**
-   * Returns a new object of class '<em>Exp</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp</em>'.
-   * @generated
-   */
-  Exp createExp();
+  Variable createVariable();
 
   /**
    * Returns a new object of class '<em>Plus</em>'.
@@ -148,6 +94,33 @@ public interface Assignment2Factory extends EFactory
    * @generated
    */
   Div createDiv();
+
+  /**
+   * Returns a new object of class '<em>Var</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var</em>'.
+   * @generated
+   */
+  Var createVar();
+
+  /**
+   * Returns a new object of class '<em>Let</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Let</em>'.
+   * @generated
+   */
+  Let createLet();
+
+  /**
+   * Returns a new object of class '<em>Num</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Num</em>'.
+   * @generated
+   */
+  Num createNum();
 
   /**
    * Returns the package supported by this factory.

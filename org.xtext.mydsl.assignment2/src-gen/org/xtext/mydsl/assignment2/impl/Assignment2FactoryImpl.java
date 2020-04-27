@@ -11,21 +11,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.xtext.mydsl.assignment2.Assignment2Factory;
-import org.xtext.mydsl.assignment2.Assignment2Package;
-import org.xtext.mydsl.assignment2.Div;
-import org.xtext.mydsl.assignment2.Exp;
-import org.xtext.mydsl.assignment2.ExpMD;
-import org.xtext.mydsl.assignment2.ExpMinusPlus;
-import org.xtext.mydsl.assignment2.ExpMultDiv;
-import org.xtext.mydsl.assignment2.ExpPM;
-import org.xtext.mydsl.assignment2.MathExp;
-import org.xtext.mydsl.assignment2.Minus;
-import org.xtext.mydsl.assignment2.Model;
-import org.xtext.mydsl.assignment2.Mult;
-import org.xtext.mydsl.assignment2.Parenthesis;
-import org.xtext.mydsl.assignment2.Plus;
-import org.xtext.mydsl.assignment2.Primary;
+import org.xtext.mydsl.assignment2.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,18 +67,15 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
     {
       case Assignment2Package.MODEL: return createModel();
       case Assignment2Package.MATH_EXP: return createMathExp();
-      case Assignment2Package.EXP_MULT_DIV: return createExpMultDiv();
-      case Assignment2Package.EXP_MINUS_PLUS: return createExpMinusPlus();
-      case Assignment2Package.EXP_PM: return createExpPM();
-      case Assignment2Package.EXP_MD: return createExpMD();
-      case Assignment2Package.PRIMARY: return createPrimary();
-      case Assignment2Package.PARENTHESIS: return createParenthesis();
-      case Assignment2Package.NUMBER: return createNumber();
-      case Assignment2Package.EXP: return createExp();
+      case Assignment2Package.EXPRESSION: return createExpression();
+      case Assignment2Package.VARIABLE: return createVariable();
       case Assignment2Package.PLUS: return createPlus();
       case Assignment2Package.MINUS: return createMinus();
       case Assignment2Package.MULT: return createMult();
       case Assignment2Package.DIV: return createDiv();
+      case Assignment2Package.VAR: return createVar();
+      case Assignment2Package.LET: return createLet();
+      case Assignment2Package.NUM: return createNum();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -128,10 +111,10 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
    * @generated
    */
   @Override
-  public ExpMultDiv createExpMultDiv()
+  public Expression createExpression()
   {
-    ExpMultDivImpl expMultDiv = new ExpMultDivImpl();
-    return expMultDiv;
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
   }
 
   /**
@@ -140,82 +123,10 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
    * @generated
    */
   @Override
-  public ExpMinusPlus createExpMinusPlus()
+  public Variable createVariable()
   {
-    ExpMinusPlusImpl expMinusPlus = new ExpMinusPlusImpl();
-    return expMinusPlus;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ExpPM createExpPM()
-  {
-    ExpPMImpl expPM = new ExpPMImpl();
-    return expPM;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ExpMD createExpMD()
-  {
-    ExpMDImpl expMD = new ExpMDImpl();
-    return expMD;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Primary createPrimary()
-  {
-    PrimaryImpl primary = new PrimaryImpl();
-    return primary;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Parenthesis createParenthesis()
-  {
-    ParenthesisImpl parenthesis = new ParenthesisImpl();
-    return parenthesis;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public org.xtext.mydsl.assignment2.Number createNumber()
-  {
-    NumberImpl number = new NumberImpl();
-    return number;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Exp createExp()
-  {
-    ExpImpl exp = new ExpImpl();
-    return exp;
+    VariableImpl variable = new VariableImpl();
+    return variable;
   }
 
   /**
@@ -264,6 +175,42 @@ public class Assignment2FactoryImpl extends EFactoryImpl implements Assignment2F
   {
     DivImpl div = new DivImpl();
     return div;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Var createVar()
+  {
+    VarImpl var = new VarImpl();
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Let createLet()
+  {
+    LetImpl let = new LetImpl();
+    return let;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Num createNum()
+  {
+    NumImpl num = new NumImpl();
+    return num;
   }
 
   /**

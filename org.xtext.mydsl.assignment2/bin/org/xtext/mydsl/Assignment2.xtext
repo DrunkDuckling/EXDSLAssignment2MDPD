@@ -3,37 +3,46 @@ grammar org.xtext.mydsl.Assignment2 with org.eclipse.xtext.common.Terminals
 generate assignment2 "http://www.xtext.org/mydsl/Assignment2"
 
 Model:
-	math += MathExp*
+	mathexp+=MathExp*
 ;
 
 MathExp:
-	'result' 'is' exp=ExpMinusPlus
+	'result' (name=STRING)? 'is' exp=Exp
 ;
 
-ExpMultDiv: 
-	Primary({Exp.left = current} operator = ExpMD right = Primary)*
+Exp returns Expression:
+	Factor (('+' {Plus.left=current} | '-' {Minus.left=current}) right=Factor)*
 ;
 
-ExpMinusPlus:
-	ExpMultDiv({ExpMinusPlus.left = current} operator = ExpPM right = ExpMultDiv)*
+Factor returns Expression:
+	Primary (('*' {Mult.left=current} | '/' {Div.left=current}) right=Primary)*	
 ;
 
-ExpPM:
-	{Plus} '+' | {Minus} '-'	
+Primary returns Expression:
+	Number | Parenthesis | VariableBinding | VariableUse
 ;
 
-ExpMD:
-	{Mult} '*' | {Div} '/'
+VariableUse returns Expression:
+	{Var} id=ID
 ;
 
-Primary:
-	Number | Parenthesis
+//VariableBinding returns Expression:
+//	{Let} 'let' id=ID '=' binding=Exp 'in' body=Exp 'end'
+//;
+
+VariableBinding returns Expression:
+	{Let} 'let' variable+=Variable ('and' variable+=Variable)* 'in' body=Exp 'end'
 ;
 
-Parenthesis:
-	'(' exp=ExpMinusPlus ')'
+Variable:
+	id=ID '=' binding=Exp
 ;
 
-Number:
-	value=INT
+
+Parenthesis returns Expression:
+	'(' Exp ')'
+;
+
+Number returns Expression:
+	{Num} value=INT
 ;

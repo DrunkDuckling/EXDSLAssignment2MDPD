@@ -68,13 +68,13 @@ public interface Assignment2Package extends EPackage
   int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Math</b></em>' containment reference list.
+   * The feature id for the '<em><b>Mathexp</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__MATH = 0;
+  int MODEL__MATHEXP = 0;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -96,13 +96,22 @@ public interface Assignment2Package extends EPackage
   int MATH_EXP = 1;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MATH_EXP__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MATH_EXP__EXP = 0;
+  int MATH_EXP__EXP = 1;
 
   /**
    * The number of structural features of the '<em>Math Exp</em>' class.
@@ -111,339 +120,63 @@ public interface Assignment2Package extends EPackage
    * @generated
    * @ordered
    */
-  int MATH_EXP_FEATURE_COUNT = 1;
+  int MATH_EXP_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ExpMinusPlusImpl <em>Exp Minus Plus</em>}' class.
+   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.ExpMinusPlusImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpMinusPlus()
+   * @see org.xtext.mydsl.assignment2.impl.ExpressionImpl
+   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpression()
    * @generated
    */
-  int EXP_MINUS_PLUS = 3;
+  int EXPRESSION = 2;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_MINUS_PLUS__LEFT = 0;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The number of structural features of the '<em>Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXP_MINUS_PLUS__OPERATOR = 1;
+  int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.VariableImpl <em>Variable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.mydsl.assignment2.impl.VariableImpl
+   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getVariable()
+   * @generated
+   */
+  int VARIABLE = 3;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXP_MINUS_PLUS__RIGHT = 2;
+  int VARIABLE__ID = 0;
 
   /**
-   * The number of structural features of the '<em>Exp Minus Plus</em>' class.
+   * The feature id for the '<em><b>Binding</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXP_MINUS_PLUS_FEATURE_COUNT = 3;
+  int VARIABLE__BINDING = 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ExpMultDivImpl <em>Exp Mult Div</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.ExpMultDivImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpMultDiv()
-   * @generated
-   */
-  int EXP_MULT_DIV = 2;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * The number of structural features of the '<em>Variable</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXP_MULT_DIV__LEFT = EXP_MINUS_PLUS__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_MULT_DIV__OPERATOR = EXP_MINUS_PLUS__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_MULT_DIV__RIGHT = EXP_MINUS_PLUS__RIGHT;
-
-  /**
-   * The number of structural features of the '<em>Exp Mult Div</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_MULT_DIV_FEATURE_COUNT = EXP_MINUS_PLUS_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ExpPMImpl <em>Exp PM</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.ExpPMImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpPM()
-   * @generated
-   */
-  int EXP_PM = 4;
-
-  /**
-   * The number of structural features of the '<em>Exp PM</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_PM_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ExpMDImpl <em>Exp MD</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.ExpMDImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpMD()
-   * @generated
-   */
-  int EXP_MD = 5;
-
-  /**
-   * The number of structural features of the '<em>Exp MD</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_MD_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.PrimaryImpl <em>Primary</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.PrimaryImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getPrimary()
-   * @generated
-   */
-  int PRIMARY = 6;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__LEFT = EXP_MULT_DIV__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__OPERATOR = EXP_MULT_DIV__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__RIGHT = EXP_MULT_DIV__RIGHT;
-
-  /**
-   * The number of structural features of the '<em>Primary</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_FEATURE_COUNT = EXP_MULT_DIV_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ParenthesisImpl <em>Parenthesis</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.ParenthesisImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getParenthesis()
-   * @generated
-   */
-  int PARENTHESIS = 7;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS__LEFT = PRIMARY__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS__OPERATOR = PRIMARY__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS__RIGHT = PRIMARY__RIGHT;
-
-  /**
-   * The feature id for the '<em><b>Exp</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS__EXP = PRIMARY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Parenthesis</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS_FEATURE_COUNT = PRIMARY_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.NumberImpl <em>Number</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.NumberImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getNumber()
-   * @generated
-   */
-  int NUMBER = 8;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER__LEFT = PRIMARY__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER__OPERATOR = PRIMARY__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER__RIGHT = PRIMARY__RIGHT;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER__VALUE = PRIMARY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Number</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER_FEATURE_COUNT = PRIMARY_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.ExpImpl <em>Exp</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.assignment2.impl.ExpImpl
-   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExp()
-   * @generated
-   */
-  int EXP = 9;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP__LEFT = EXP_MULT_DIV__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP__OPERATOR = EXP_MULT_DIV__OPERATOR;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP__RIGHT = EXP_MULT_DIV__RIGHT;
-
-  /**
-   * The number of structural features of the '<em>Exp</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXP_FEATURE_COUNT = EXP_MULT_DIV_FEATURE_COUNT + 0;
+  int VARIABLE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.PlusImpl <em>Plus</em>}' class.
@@ -453,7 +186,25 @@ public interface Assignment2Package extends EPackage
    * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 10;
+  int PLUS = 4;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUS__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUS__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Plus</em>' class.
@@ -462,7 +213,7 @@ public interface Assignment2Package extends EPackage
    * @generated
    * @ordered
    */
-  int PLUS_FEATURE_COUNT = EXP_PM_FEATURE_COUNT + 0;
+  int PLUS_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.MinusImpl <em>Minus</em>}' class.
@@ -472,7 +223,25 @@ public interface Assignment2Package extends EPackage
    * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 11;
+  int MINUS = 5;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Minus</em>' class.
@@ -481,7 +250,7 @@ public interface Assignment2Package extends EPackage
    * @generated
    * @ordered
    */
-  int MINUS_FEATURE_COUNT = EXP_PM_FEATURE_COUNT + 0;
+  int MINUS_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.MultImpl <em>Mult</em>}' class.
@@ -491,7 +260,25 @@ public interface Assignment2Package extends EPackage
    * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getMult()
    * @generated
    */
-  int MULT = 12;
+  int MULT = 6;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULT__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULT__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Mult</em>' class.
@@ -500,7 +287,7 @@ public interface Assignment2Package extends EPackage
    * @generated
    * @ordered
    */
-  int MULT_FEATURE_COUNT = EXP_MD_FEATURE_COUNT + 0;
+  int MULT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.DivImpl <em>Div</em>}' class.
@@ -510,7 +297,25 @@ public interface Assignment2Package extends EPackage
    * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getDiv()
    * @generated
    */
-  int DIV = 13;
+  int DIV = 7;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIV__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIV__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Div</em>' class.
@@ -519,7 +324,100 @@ public interface Assignment2Package extends EPackage
    * @generated
    * @ordered
    */
-  int DIV_FEATURE_COUNT = EXP_MD_FEATURE_COUNT + 0;
+  int DIV_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.VarImpl <em>Var</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.mydsl.assignment2.impl.VarImpl
+   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getVar()
+   * @generated
+   */
+  int VAR = 8;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR__ID = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Var</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.LetImpl <em>Let</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.mydsl.assignment2.impl.LetImpl
+   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getLet()
+   * @generated
+   */
+  int LET = 9;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LET__VARIABLE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LET__BODY = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Let</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LET_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.mydsl.assignment2.impl.NumImpl <em>Num</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.mydsl.assignment2.impl.NumImpl
+   * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getNum()
+   * @generated
+   */
+  int NUM = 10;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUM__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Num</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUM_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 
   /**
@@ -533,15 +431,15 @@ public interface Assignment2Package extends EPackage
   EClass getModel();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.mydsl.assignment2.Model#getMath <em>Math</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.mydsl.assignment2.Model#getMathexp <em>Mathexp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Math</em>'.
-   * @see org.xtext.mydsl.assignment2.Model#getMath()
+   * @return the meta object for the containment reference list '<em>Mathexp</em>'.
+   * @see org.xtext.mydsl.assignment2.Model#getMathexp()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_Math();
+  EReference getModel_Mathexp();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.MathExp <em>Math Exp</em>}'.
@@ -552,6 +450,17 @@ public interface Assignment2Package extends EPackage
    * @generated
    */
   EClass getMathExp();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.assignment2.MathExp#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.mydsl.assignment2.MathExp#getName()
+   * @see #getMathExp()
+   * @generated
+   */
+  EAttribute getMathExp_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.MathExp#getExp <em>Exp</em>}'.
@@ -565,139 +474,46 @@ public interface Assignment2Package extends EPackage
   EReference getMathExp_Exp();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.ExpMultDiv <em>Exp Mult Div</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Exp Mult Div</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpMultDiv
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see org.xtext.mydsl.assignment2.Expression
    * @generated
    */
-  EClass getExpMultDiv();
+  EClass getExpression();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.ExpMinusPlus <em>Exp Minus Plus</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Variable <em>Variable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Exp Minus Plus</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpMinusPlus
+   * @return the meta object for class '<em>Variable</em>'.
+   * @see org.xtext.mydsl.assignment2.Variable
    * @generated
    */
-  EClass getExpMinusPlus();
+  EClass getVariable();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.ExpMinusPlus#getLeft <em>Left</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.assignment2.Variable#getId <em>Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpMinusPlus#getLeft()
-   * @see #getExpMinusPlus()
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see org.xtext.mydsl.assignment2.Variable#getId()
+   * @see #getVariable()
    * @generated
    */
-  EReference getExpMinusPlus_Left();
+  EAttribute getVariable_Id();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.ExpMinusPlus#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Variable#getBinding <em>Binding</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Operator</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpMinusPlus#getOperator()
-   * @see #getExpMinusPlus()
+   * @return the meta object for the containment reference '<em>Binding</em>'.
+   * @see org.xtext.mydsl.assignment2.Variable#getBinding()
+   * @see #getVariable()
    * @generated
    */
-  EReference getExpMinusPlus_Operator();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.ExpMinusPlus#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpMinusPlus#getRight()
-   * @see #getExpMinusPlus()
-   * @generated
-   */
-  EReference getExpMinusPlus_Right();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.ExpPM <em>Exp PM</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Exp PM</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpPM
-   * @generated
-   */
-  EClass getExpPM();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.ExpMD <em>Exp MD</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Exp MD</em>'.
-   * @see org.xtext.mydsl.assignment2.ExpMD
-   * @generated
-   */
-  EClass getExpMD();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Primary <em>Primary</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Primary</em>'.
-   * @see org.xtext.mydsl.assignment2.Primary
-   * @generated
-   */
-  EClass getPrimary();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Parenthesis <em>Parenthesis</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Parenthesis</em>'.
-   * @see org.xtext.mydsl.assignment2.Parenthesis
-   * @generated
-   */
-  EClass getParenthesis();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Parenthesis#getExp <em>Exp</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Exp</em>'.
-   * @see org.xtext.mydsl.assignment2.Parenthesis#getExp()
-   * @see #getParenthesis()
-   * @generated
-   */
-  EReference getParenthesis_Exp();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Number <em>Number</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Number</em>'.
-   * @see org.xtext.mydsl.assignment2.Number
-   * @generated
-   */
-  EClass getNumber();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.assignment2.Number#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.xtext.mydsl.assignment2.Number#getValue()
-   * @see #getNumber()
-   * @generated
-   */
-  EAttribute getNumber_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Exp <em>Exp</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Exp</em>'.
-   * @see org.xtext.mydsl.assignment2.Exp
-   * @generated
-   */
-  EClass getExp();
+  EReference getVariable_Binding();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Plus <em>Plus</em>}'.
@@ -710,6 +526,28 @@ public interface Assignment2Package extends EPackage
   EClass getPlus();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Plus#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.xtext.mydsl.assignment2.Plus#getLeft()
+   * @see #getPlus()
+   * @generated
+   */
+  EReference getPlus_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Plus#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.mydsl.assignment2.Plus#getRight()
+   * @see #getPlus()
+   * @generated
+   */
+  EReference getPlus_Right();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Minus <em>Minus</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -718,6 +556,28 @@ public interface Assignment2Package extends EPackage
    * @generated
    */
   EClass getMinus();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Minus#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.xtext.mydsl.assignment2.Minus#getLeft()
+   * @see #getMinus()
+   * @generated
+   */
+  EReference getMinus_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Minus#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.mydsl.assignment2.Minus#getRight()
+   * @see #getMinus()
+   * @generated
+   */
+  EReference getMinus_Right();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Mult <em>Mult</em>}'.
@@ -730,6 +590,28 @@ public interface Assignment2Package extends EPackage
   EClass getMult();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Mult#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.xtext.mydsl.assignment2.Mult#getLeft()
+   * @see #getMult()
+   * @generated
+   */
+  EReference getMult_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Mult#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.mydsl.assignment2.Mult#getRight()
+   * @see #getMult()
+   * @generated
+   */
+  EReference getMult_Right();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Div <em>Div</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -738,6 +620,102 @@ public interface Assignment2Package extends EPackage
    * @generated
    */
   EClass getDiv();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Div#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see org.xtext.mydsl.assignment2.Div#getLeft()
+   * @see #getDiv()
+   * @generated
+   */
+  EReference getDiv_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Div#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see org.xtext.mydsl.assignment2.Div#getRight()
+   * @see #getDiv()
+   * @generated
+   */
+  EReference getDiv_Right();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Var <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Var</em>'.
+   * @see org.xtext.mydsl.assignment2.Var
+   * @generated
+   */
+  EClass getVar();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.assignment2.Var#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see org.xtext.mydsl.assignment2.Var#getId()
+   * @see #getVar()
+   * @generated
+   */
+  EAttribute getVar_Id();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Let <em>Let</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Let</em>'.
+   * @see org.xtext.mydsl.assignment2.Let
+   * @generated
+   */
+  EClass getLet();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.mydsl.assignment2.Let#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Variable</em>'.
+   * @see org.xtext.mydsl.assignment2.Let#getVariable()
+   * @see #getLet()
+   * @generated
+   */
+  EReference getLet_Variable();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.assignment2.Let#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see org.xtext.mydsl.assignment2.Let#getBody()
+   * @see #getLet()
+   * @generated
+   */
+  EReference getLet_Body();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.mydsl.assignment2.Num <em>Num</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Num</em>'.
+   * @see org.xtext.mydsl.assignment2.Num
+   * @generated
+   */
+  EClass getNum();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.assignment2.Num#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.xtext.mydsl.assignment2.Num#getValue()
+   * @see #getNum()
+   * @generated
+   */
+  EAttribute getNum_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -773,12 +751,12 @@ public interface Assignment2Package extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Math</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Mathexp</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__MATH = eINSTANCE.getModel_Math();
+    EReference MODEL__MATHEXP = eINSTANCE.getModel_Mathexp();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.MathExpImpl <em>Math Exp</em>}' class.
@@ -791,6 +769,14 @@ public interface Assignment2Package extends EPackage
     EClass MATH_EXP = eINSTANCE.getMathExp();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MATH_EXP__NAME = eINSTANCE.getMathExp_Name();
+
+    /**
      * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -799,124 +785,40 @@ public interface Assignment2Package extends EPackage
     EReference MATH_EXP__EXP = eINSTANCE.getMathExp_Exp();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ExpMultDivImpl <em>Exp Mult Div</em>}' class.
+     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ExpressionImpl <em>Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.ExpMultDivImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpMultDiv()
+     * @see org.xtext.mydsl.assignment2.impl.ExpressionImpl
+     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpression()
      * @generated
      */
-    EClass EXP_MULT_DIV = eINSTANCE.getExpMultDiv();
+    EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ExpMinusPlusImpl <em>Exp Minus Plus</em>}' class.
+     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.VariableImpl <em>Variable</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.ExpMinusPlusImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpMinusPlus()
+     * @see org.xtext.mydsl.assignment2.impl.VariableImpl
+     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getVariable()
      * @generated
      */
-    EClass EXP_MINUS_PLUS = eINSTANCE.getExpMinusPlus();
+    EClass VARIABLE = eINSTANCE.getVariable();
 
     /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXP_MINUS_PLUS__LEFT = eINSTANCE.getExpMinusPlus_Left();
+    EAttribute VARIABLE__ID = eINSTANCE.getVariable_Id();
 
     /**
-     * The meta object literal for the '<em><b>Operator</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Binding</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXP_MINUS_PLUS__OPERATOR = eINSTANCE.getExpMinusPlus_Operator();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXP_MINUS_PLUS__RIGHT = eINSTANCE.getExpMinusPlus_Right();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ExpPMImpl <em>Exp PM</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.ExpPMImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpPM()
-     * @generated
-     */
-    EClass EXP_PM = eINSTANCE.getExpPM();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ExpMDImpl <em>Exp MD</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.ExpMDImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExpMD()
-     * @generated
-     */
-    EClass EXP_MD = eINSTANCE.getExpMD();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.PrimaryImpl <em>Primary</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.PrimaryImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getPrimary()
-     * @generated
-     */
-    EClass PRIMARY = eINSTANCE.getPrimary();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ParenthesisImpl <em>Parenthesis</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.ParenthesisImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getParenthesis()
-     * @generated
-     */
-    EClass PARENTHESIS = eINSTANCE.getParenthesis();
-
-    /**
-     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARENTHESIS__EXP = eINSTANCE.getParenthesis_Exp();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.NumberImpl <em>Number</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.NumberImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getNumber()
-     * @generated
-     */
-    EClass NUMBER = eINSTANCE.getNumber();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NUMBER__VALUE = eINSTANCE.getNumber_Value();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.ExpImpl <em>Exp</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.assignment2.impl.ExpImpl
-     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getExp()
-     * @generated
-     */
-    EClass EXP = eINSTANCE.getExp();
+    EReference VARIABLE__BINDING = eINSTANCE.getVariable_Binding();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.PlusImpl <em>Plus</em>}' class.
@@ -929,6 +831,22 @@ public interface Assignment2Package extends EPackage
     EClass PLUS = eINSTANCE.getPlus();
 
     /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PLUS__LEFT = eINSTANCE.getPlus_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PLUS__RIGHT = eINSTANCE.getPlus_Right();
+
+    /**
      * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.MinusImpl <em>Minus</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -937,6 +855,22 @@ public interface Assignment2Package extends EPackage
      * @generated
      */
     EClass MINUS = eINSTANCE.getMinus();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MINUS__LEFT = eINSTANCE.getMinus_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MINUS__RIGHT = eINSTANCE.getMinus_Right();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.MultImpl <em>Mult</em>}' class.
@@ -949,6 +883,22 @@ public interface Assignment2Package extends EPackage
     EClass MULT = eINSTANCE.getMult();
 
     /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULT__LEFT = eINSTANCE.getMult_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULT__RIGHT = eINSTANCE.getMult_Right();
+
+    /**
      * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.DivImpl <em>Div</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -957,6 +907,84 @@ public interface Assignment2Package extends EPackage
      * @generated
      */
     EClass DIV = eINSTANCE.getDiv();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DIV__LEFT = eINSTANCE.getDiv_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DIV__RIGHT = eINSTANCE.getDiv_Right();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.VarImpl <em>Var</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.mydsl.assignment2.impl.VarImpl
+     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getVar()
+     * @generated
+     */
+    EClass VAR = eINSTANCE.getVar();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VAR__ID = eINSTANCE.getVar_Id();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.LetImpl <em>Let</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.mydsl.assignment2.impl.LetImpl
+     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getLet()
+     * @generated
+     */
+    EClass LET = eINSTANCE.getLet();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LET__VARIABLE = eINSTANCE.getLet_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LET__BODY = eINSTANCE.getLet_Body();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.mydsl.assignment2.impl.NumImpl <em>Num</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.mydsl.assignment2.impl.NumImpl
+     * @see org.xtext.mydsl.assignment2.impl.Assignment2PackageImpl#getNum()
+     * @generated
+     */
+    EClass NUM = eINSTANCE.getNum();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUM__VALUE = eINSTANCE.getNum_Value();
 
   }
 

@@ -3,125 +3,364 @@
  */
 package org.xtext.mydsl.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
-import java.util.Arrays;
-import java.util.function.Consumer;
-import javax.swing.JOptionPane;
-import org.eclipse.emf.ecore.EObject;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.xtext.mydsl.assignment2.ExpMinusPlus;
-import org.xtext.mydsl.assignment2.ExpMultDiv;
+import org.xtext.mydsl.assignment2.Div;
+import org.xtext.mydsl.assignment2.Expression;
+import org.xtext.mydsl.assignment2.Let;
 import org.xtext.mydsl.assignment2.MathExp;
+import org.xtext.mydsl.assignment2.Minus;
 import org.xtext.mydsl.assignment2.Model;
 import org.xtext.mydsl.assignment2.Mult;
-import org.xtext.mydsl.assignment2.Parenthesis;
+import org.xtext.mydsl.assignment2.Num;
 import org.xtext.mydsl.assignment2.Plus;
-import org.xtext.mydsl.assignment2.Primary;
+import org.xtext.mydsl.assignment2.Var;
+import org.xtext.mydsl.assignment2.Variable;
 
-/**
- * Generates code from your model files on save.
- * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
- */
 @SuppressWarnings("all")
 public class Assignment2Generator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    final Consumer<MathExp> _function = (MathExp it) -> {
-      this.compute(it);
-    };
-    Iterators.<Model>filter(resource.getAllContents(), Model.class).next().getMath().forEach(_function);
+    final Model model = Iterators.<Model>filter(resource.getAllContents(), Model.class).next();
+    fsa.generateFile(String.format(("%s/" + "MathComputation.java"), "code"), 
+      this.generateMathComputation(model.getMathexp()));
   }
   
-  public void compute(final MathExp math) {
-    final int result = this.computeExpression(math.getExp());
-    JOptionPane.showMessageDialog(null, ("result = " + Integer.valueOf(result)), "Math Language", JOptionPane.INFORMATION_MESSAGE);
-  }
-  
-  public int computeResult(final MathExp math) {
-    return this.computeExpression(math.getExp());
-  }
-  
-  public int computePrim(final Primary factor) {
-    return this.computeInnerPrimary(factor);
-  }
-  
-  protected int _computeExpression(final ExpMinusPlus emp) {
-    int _xblockexpression = (int) 0;
+  private String generateMathComputation(final Iterable<MathExp> math) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.lang.Math; ");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class MathComputation {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("// BEGIN: required for external functions");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public static interface Externals {");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("public int Math.pow(int base, int exponent);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("private static Externals externals;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public MathComputation(Externals _externals) {");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("externals = _externals;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("// END: required for external functions");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public static void main(String[] args) {");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.newLine();
     {
-      final int left = this.computeExpression(emp.getLeft());
-      final int right = this.computeExpression(emp.getRight());
-      int _switchResult = (int) 0;
-      EObject _operator = emp.getOperator();
-      boolean _matched = false;
-      if (_operator instanceof Plus) {
+      for(final MathExp mat : math) {
+        String _generatePrints = this.generatePrints(mat);
+        _builder.append(_generatePrints);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("      \t");
+    _builder.append("// BEGIN: external functions only");
+    _builder.newLine();
+    _builder.append("      \t");
+    _builder.append("// System.out.println(\"external example \" + (externals.power(2, 6)));");
+    _builder.newLine();
+    _builder.append("      \t");
+    _builder.append("// END: external functions only");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public void compute() {");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("}");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  private String generatePrints(final MathExp math) {
+    final Expression exp = math.getExp();
+    String _name = math.getName();
+    boolean _notEquals = (!Objects.equal(_name, null));
+    if (_notEquals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("int ");
+      String _name_1 = math.getName();
+      _builder.append(_name_1, "\t");
+      _builder.append(" = ");
+      int _compute = this.compute(math);
+      _builder.append(_compute, "\t");
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("System.out.println(\"");
+      String _name_2 = math.getName();
+      _builder.append(_name_2, "\t");
+      _builder.append(": \" + \"is \" +  ");
+      int _compute_1 = this.compute(math);
+      _builder.append(_compute_1, "\t");
+      _builder.append(");");
+      _builder.newLineIfNotEmpty();
+      return _builder.toString();
+    } else {
+      if ((exp instanceof Let)) {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.newLine();
+        {
+          EList<Variable> _variable = ((Let)exp).getVariable();
+          for(final Variable let : _variable) {
+            _builder_1.append("\t");
+            _builder_1.append("int ");
+            String _id = let.getId();
+            _builder_1.append(_id, "\t");
+            _builder_1.append(" = ");
+            String _displayExp = this.displayExp(let.getBinding());
+            _builder_1.append(_displayExp, "\t");
+            _builder_1.append(";");
+            _builder_1.newLineIfNotEmpty();
+          }
+        }
+        {
+          EList<Variable> _variable_1 = ((Let)exp).getVariable();
+          for(final Variable let_1 : _variable_1) {
+            _builder_1.append("\t");
+            _builder_1.append("System.out.println(\"");
+            String _id_1 = let_1.getId();
+            _builder_1.append(_id_1, "\t");
+            _builder_1.append("\" + \" Defined as: \" + \"");
+            String _displayExp_1 = this.displayExp(let_1.getBinding());
+            _builder_1.append(_displayExp_1, "\t");
+            _builder_1.append("\");");
+            _builder_1.newLineIfNotEmpty();
+          }
+        }
+        _builder_1.append("\t");
+        _builder_1.append("System.out.println(\"Result of: \" +  \"");
+        String _displayExp_2 = this.displayExp(((Let)exp).getBody());
+        _builder_1.append(_displayExp_2, "\t");
+        _builder_1.append("\" + \" is: \" + ");
+        int _compute_2 = this.compute(math);
+        _builder_1.append(_compute_2, "\t");
+        _builder_1.append(");");
+        _builder_1.newLineIfNotEmpty();
+        return _builder_1.toString();
+      } else {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("System.out.println(\"Math is: \" + \"");
+        String _display = this.display(math);
+        _builder_2.append(_display, "\t");
+        _builder_2.append("\" + \" - result is: \" + ");
+        int _compute_3 = this.compute(math);
+        _builder_2.append(_compute_3, "\t");
+        _builder_2.append(");");
+        _builder_2.newLineIfNotEmpty();
+        return _builder_2.toString();
+      }
+    }
+  }
+  
+  public int compute(final MathExp math) {
+    Expression _exp = math.getExp();
+    HashMap<String, Integer> _hashMap = new HashMap<String, Integer>();
+    return this.computeExp(_exp, _hashMap);
+  }
+  
+  public int computeExp(final Expression exp, final Map<String, Integer> env) {
+    Integer _switchResult = null;
+    boolean _matched = false;
+    if (exp instanceof Plus) {
+      _matched=true;
+      int _computeExp = this.computeExp(((Plus)exp).getLeft(), env);
+      int _computeExp_1 = this.computeExp(((Plus)exp).getRight(), env);
+      _switchResult = Integer.valueOf((_computeExp + _computeExp_1));
+    }
+    if (!_matched) {
+      if (exp instanceof Minus) {
         _matched=true;
-        _switchResult = (left + right);
+        int _computeExp = this.computeExp(((Minus)exp).getLeft(), env);
+        int _computeExp_1 = this.computeExp(((Minus)exp).getRight(), env);
+        _switchResult = Integer.valueOf((_computeExp - _computeExp_1));
       }
-      if (!_matched) {
-        _switchResult = (left - right);
+    }
+    if (!_matched) {
+      if (exp instanceof Mult) {
+        _matched=true;
+        int _computeExp = this.computeExp(((Mult)exp).getLeft(), env);
+        int _computeExp_1 = this.computeExp(((Mult)exp).getRight(), env);
+        _switchResult = Integer.valueOf((_computeExp * _computeExp_1));
       }
-      _xblockexpression = _switchResult;
+    }
+    if (!_matched) {
+      if (exp instanceof Div) {
+        _matched=true;
+        int _computeExp = this.computeExp(((Div)exp).getLeft(), env);
+        int _computeExp_1 = this.computeExp(((Div)exp).getRight(), env);
+        _switchResult = Integer.valueOf((_computeExp / _computeExp_1));
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Num) {
+        _matched=true;
+        _switchResult = Integer.valueOf(((Num)exp).getValue());
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Var) {
+        _matched=true;
+        _switchResult = env.get(((Var)exp).getId());
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Let) {
+        _matched=true;
+        _switchResult = Integer.valueOf(this.computeExp(((Let)exp).getBody(), this.computeLet(env, ((Let)exp).getVariable())));
+      }
+    }
+    if (!_matched) {
+      throw new Error("Invalid expression");
+    }
+    return (_switchResult).intValue();
+  }
+  
+  public Map<String, Integer> computeLet(final Map<String, Integer> env1, final List<Variable> let) {
+    HashMap<String, Integer> _xblockexpression = null;
+    {
+      final HashMap<String, Integer> env2 = new HashMap<String, Integer>(env1);
+      for (final Variable e : let) {
+        env2.put(e.getId(), Integer.valueOf(this.computeExp(e.getBinding(), env1)));
+      }
+      _xblockexpression = env2;
     }
     return _xblockexpression;
   }
   
-  protected int _computeExpression(final ExpMultDiv emd) {
-    int _xblockexpression = (int) 0;
+  public Map<String, Integer> bind(final Map<String, Integer> env1, final String name, final int value) {
+    HashMap<String, Integer> _xblockexpression = null;
     {
-      final int left = this.computeExpression(emd.getLeft());
-      final int right = this.computeExpression(emd.getRight());
-      int _switchResult = (int) 0;
-      EObject _operator = emd.getOperator();
-      boolean _matched = false;
-      if (_operator instanceof Mult) {
-        _matched=true;
-        _switchResult = (left * right);
-      }
-      if (!_matched) {
-        _switchResult = (left / right);
-      }
-      _xblockexpression = _switchResult;
+      final HashMap<String, Integer> env2 = new HashMap<String, Integer>(env1);
+      env2.put(name, Integer.valueOf(value));
+      _xblockexpression = env2;
     }
     return _xblockexpression;
   }
   
-  protected int _computeExpression(final Primary prim) {
-    return this.computeInnerPrimary(prim);
+  public String display(final MathExp math) {
+    return this.displayExp(math.getExp());
   }
   
-  protected int _computeInnerPrimary(final org.xtext.mydsl.assignment2.Number n) {
-    return n.getValue();
-  }
-  
-  protected int _computeInnerPrimary(final Parenthesis p) {
-    return this.computeExpression(p.getExp());
-  }
-  
-  public int computeExpression(final ExpMinusPlus prim) {
-    if (prim instanceof Primary) {
-      return _computeExpression((Primary)prim);
-    } else if (prim instanceof ExpMultDiv) {
-      return _computeExpression((ExpMultDiv)prim);
-    } else if (prim != null) {
-      return _computeExpression(prim);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(prim).toString());
+  public String displayExp(final Expression exp) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (exp instanceof Plus) {
+      _matched=true;
+      String _displayExp = this.displayExp(((Plus)exp).getLeft());
+      String _plus = (_displayExp + "+");
+      String _displayExp_1 = this.displayExp(((Plus)exp).getRight());
+      _switchResult = (_plus + _displayExp_1);
     }
-  }
-  
-  public int computeInnerPrimary(final Primary n) {
-    if (n instanceof org.xtext.mydsl.assignment2.Number) {
-      return _computeInnerPrimary((org.xtext.mydsl.assignment2.Number)n);
-    } else if (n instanceof Parenthesis) {
-      return _computeInnerPrimary((Parenthesis)n);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(n).toString());
+    if (!_matched) {
+      if (exp instanceof Minus) {
+        _matched=true;
+        String _displayExp = this.displayExp(((Minus)exp).getLeft());
+        String _plus = (_displayExp + "-");
+        String _displayExp_1 = this.displayExp(((Minus)exp).getRight());
+        _switchResult = (_plus + _displayExp_1);
+      }
     }
+    if (!_matched) {
+      if (exp instanceof Mult) {
+        _matched=true;
+        String _displayExp = this.displayExp(((Mult)exp).getLeft());
+        String _plus = (_displayExp + "*");
+        String _displayExp_1 = this.displayExp(((Mult)exp).getRight());
+        _switchResult = (_plus + _displayExp_1);
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Div) {
+        _matched=true;
+        String _displayExp = this.displayExp(((Div)exp).getLeft());
+        String _plus = (_displayExp + "/");
+        String _displayExp_1 = this.displayExp(((Div)exp).getRight());
+        _switchResult = (_plus + _displayExp_1);
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Num) {
+        _matched=true;
+        _switchResult = Integer.toString(((Num)exp).getValue());
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Var) {
+        _matched=true;
+        _switchResult = ((Var)exp).getId();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Let) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        {
+          EList<Variable> _variable = ((Let)exp).getVariable();
+          for(final Variable let : _variable) {
+            _builder.newLineIfNotEmpty();
+            _builder.append("Let ");
+            String _id = let.getId();
+            _builder.append(_id);
+            _builder.append(" = ");
+            String _displayExp = this.displayExp(let.getBinding());
+            _builder.append(_displayExp);
+            _builder.append(", in ");
+            String _displayExp_1 = this.displayExp(((Let)exp).getBody());
+            _builder.append(_displayExp_1);
+            _builder.append(" end");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t");
+          }
+        }
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      throw new Error("Invalid display expression");
+    }
+    return _switchResult;
   }
 }

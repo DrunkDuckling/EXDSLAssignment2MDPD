@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.mydsl.assignment2.Assignment2Package;
-import org.xtext.mydsl.assignment2.ExpMinusPlus;
+import org.xtext.mydsl.assignment2.Expression;
 import org.xtext.mydsl.assignment2.MathExp;
 
 /**
@@ -24,6 +24,7 @@ import org.xtext.mydsl.assignment2.MathExp;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.mydsl.assignment2.impl.MathExpImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.mydsl.assignment2.impl.MathExpImpl#getExp <em>Exp</em>}</li>
  * </ul>
  *
@@ -32,6 +33,26 @@ import org.xtext.mydsl.assignment2.MathExp;
 public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
 {
   /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -39,7 +60,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    * @ordered
    */
-  protected ExpMinusPlus exp;
+  protected Expression exp;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +89,32 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    */
   @Override
-  public ExpMinusPlus getExp()
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, Assignment2Package.MATH_EXP__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression getExp()
   {
     return exp;
   }
@@ -78,9 +124,9 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExp(ExpMinusPlus newExp, NotificationChain msgs)
+  public NotificationChain basicSetExp(Expression newExp, NotificationChain msgs)
   {
-    ExpMinusPlus oldExp = exp;
+    Expression oldExp = exp;
     exp = newExp;
     if (eNotificationRequired())
     {
@@ -96,7 +142,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    */
   @Override
-  public void setExp(ExpMinusPlus newExp)
+  public void setExp(Expression newExp)
   {
     if (newExp != exp)
     {
@@ -138,6 +184,8 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
+      case Assignment2Package.MATH_EXP__NAME:
+        return getName();
       case Assignment2Package.MATH_EXP__EXP:
         return getExp();
     }
@@ -154,8 +202,11 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
+      case Assignment2Package.MATH_EXP__NAME:
+        setName((String)newValue);
+        return;
       case Assignment2Package.MATH_EXP__EXP:
-        setExp((ExpMinusPlus)newValue);
+        setExp((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,8 +222,11 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
+      case Assignment2Package.MATH_EXP__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case Assignment2Package.MATH_EXP__EXP:
-        setExp((ExpMinusPlus)null);
+        setExp((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -188,10 +242,29 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
+      case Assignment2Package.MATH_EXP__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case Assignment2Package.MATH_EXP__EXP:
         return exp != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //MathExpImpl

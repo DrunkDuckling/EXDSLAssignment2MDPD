@@ -29,7 +29,7 @@ import org.xtext.mydsl.assignment2.Model;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.assignment2.impl.ModelImpl#getMath <em>Math</em>}</li>
+ *   <li>{@link org.xtext.mydsl.assignment2.impl.ModelImpl#getMathexp <em>Mathexp</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +37,14 @@ import org.xtext.mydsl.assignment2.Model;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getMath() <em>Math</em>}' containment reference list.
+   * The cached value of the '{@link #getMathexp() <em>Mathexp</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMath()
+   * @see #getMathexp()
    * @generated
    * @ordered
    */
-  protected EList<MathExp> math;
+  protected EList<MathExp> mathexp;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +73,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public EList<MathExp> getMath()
+  public EList<MathExp> getMathexp()
   {
-    if (math == null)
+    if (mathexp == null)
     {
-      math = new EObjectContainmentEList<MathExp>(MathExp.class, this, Assignment2Package.MODEL__MATH);
+      mathexp = new EObjectContainmentEList<MathExp>(MathExp.class, this, Assignment2Package.MODEL__MATHEXP);
     }
-    return math;
+    return mathexp;
   }
 
   /**
@@ -92,8 +92,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case Assignment2Package.MODEL__MATH:
-        return ((InternalEList<?>)getMath()).basicRemove(otherEnd, msgs);
+      case Assignment2Package.MODEL__MATHEXP:
+        return ((InternalEList<?>)getMathexp()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +108,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case Assignment2Package.MODEL__MATH:
-        return getMath();
+      case Assignment2Package.MODEL__MATHEXP:
+        return getMathexp();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +125,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case Assignment2Package.MODEL__MATH:
-        getMath().clear();
-        getMath().addAll((Collection<? extends MathExp>)newValue);
+      case Assignment2Package.MODEL__MATHEXP:
+        getMathexp().clear();
+        getMathexp().addAll((Collection<? extends MathExp>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +143,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case Assignment2Package.MODEL__MATH:
-        getMath().clear();
+      case Assignment2Package.MODEL__MATHEXP:
+        getMathexp().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +160,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case Assignment2Package.MODEL__MATH:
-        return math != null && !math.isEmpty();
+      case Assignment2Package.MODEL__MATHEXP:
+        return mathexp != null && !mathexp.isEmpty();
     }
     return super.eIsSet(featureID);
   }
