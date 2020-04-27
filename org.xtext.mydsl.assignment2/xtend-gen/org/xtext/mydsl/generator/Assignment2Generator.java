@@ -49,7 +49,7 @@ public class Assignment2Generator extends AbstractGenerator {
     _builder.append("public static interface Externals {");
     _builder.newLine();
     _builder.append("    \t");
-    _builder.append("public int Math.pow(int base, int exponent);");
+    _builder.append("public int power(int base, int exponent);");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("}");

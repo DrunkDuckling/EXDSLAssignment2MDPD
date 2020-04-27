@@ -52,7 +52,7 @@ class Assignment2Generator extends AbstractGenerator {
 		public class MathComputation {
 		    // BEGIN: required for external functions
 		    public static interface Externals {
-		    	public int Math.pow(int base, int exponent);
+		    	public int power(int base, int exponent);
 		    }
 		    private static Externals externals;
 		
