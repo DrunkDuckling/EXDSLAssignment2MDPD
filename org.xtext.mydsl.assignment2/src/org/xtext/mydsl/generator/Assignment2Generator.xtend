@@ -50,6 +50,18 @@ class Assignment2Generator extends AbstractGenerator {
 		import java.lang.Math; 
 		
 		public class MathComputation {
+			
+			public static void main(String[] args) {
+				// Generated prints from Xtext
+				«FOR mat: math»
+  		      	   «generatePrints(mat)»
+  		        «ENDFOR»  	
+				    	    
+		      	// BEGIN: external functions only
+		      	// System.out.println("external example " + (externals.power(2, 6)));
+		      	// END: external functions only
+		    }
+					    
 		    // BEGIN: required for external functions
 		    public static interface Externals {
 		    	public int power(int base, int exponent);
@@ -60,19 +72,8 @@ class Assignment2Generator extends AbstractGenerator {
 		    	externals = _externals;
 		    }
 		    // END: required for external functions
-		
-		    public static void main(String[] args) {
-		    	
-	    	    «FOR mat: math»
-		      	   «generatePrints(mat)»
-		        «ENDFOR»
-		      	// BEGIN: external functions only
-		      	// System.out.println("external example " + (externals.power(2, 6)));
-		      	// END: external functions only
-		    }
-		
+		    
 		    public void compute() {
-		      
 		    }
 		  }
 		''';
@@ -86,7 +87,7 @@ class Assignment2Generator extends AbstractGenerator {
 			return'''
 			
 				int «math.name» = «math.compute»;
-				System.out.println("«math.name»: " + "is " +  «math.compute»);
+				System.out.println("«math.name»: " + "is " +  «math.name»);
 			''';
 		}else if (exp instanceof Let){
 			return '''
@@ -97,12 +98,12 @@ class Assignment2Generator extends AbstractGenerator {
 				«FOR let: exp.variable»
 				System.out.println("«let.id»" + " Defined as: " + "«let.binding.displayExp»");
 				«ENDFOR»
-				System.out.println("Result of: " +  "«exp.body.displayExp»" + " is: " + «math.compute»);
+				System.out.println("Result of: " +  "«exp.body.displayExp»" + " is: " + («exp.body.displayExp»));
 			''';
 		}else{
 			return'''
 			
-				System.out.println("Math is: " + "«math.display»" + " - result is: " + «math.compute»);
+				System.out.println("Math is: " + "«math.display»" + " result is: " + («math.display»));
 			''';	
 		}
 	}
@@ -165,5 +166,6 @@ class Assignment2Generator extends AbstractGenerator {
 				«ENDFOR»'''
 			default: throw new Error("Invalid display expression")
 		}
-	}		
+	}	
+			
 }

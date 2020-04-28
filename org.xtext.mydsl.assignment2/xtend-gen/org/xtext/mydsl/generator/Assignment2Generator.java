@@ -42,6 +42,37 @@ public class Assignment2Generator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("public class MathComputation {");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static void main(String[] args) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("// Generated prints from Xtext");
+    _builder.newLine();
+    {
+      for(final MathExp mat : math) {
+        String _generatePrints = this.generatePrints(mat);
+        _builder.append(_generatePrints);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t    \t    ");
+    _builder.newLine();
+    _builder.append("      \t");
+    _builder.append("// BEGIN: external functions only");
+    _builder.newLine();
+    _builder.append("      \t");
+    _builder.append("// System.out.println(\"external example \" + (externals.power(2, 6)));");
+    _builder.newLine();
+    _builder.append("      \t");
+    _builder.append("// END: external functions only");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t    ");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("// BEGIN: required for external functions");
     _builder.newLine();
@@ -70,36 +101,10 @@ public class Assignment2Generator extends AbstractGenerator {
     _builder.append("    ");
     _builder.append("// END: required for external functions");
     _builder.newLine();
-    _builder.newLine();
     _builder.append("    ");
-    _builder.append("public static void main(String[] args) {");
-    _builder.newLine();
-    _builder.append("    \t");
-    _builder.newLine();
-    {
-      for(final MathExp mat : math) {
-        String _generatePrints = this.generatePrints(mat);
-        _builder.append(_generatePrints);
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("      \t");
-    _builder.append("// BEGIN: external functions only");
-    _builder.newLine();
-    _builder.append("      \t");
-    _builder.append("// System.out.println(\"external example \" + (externals.power(2, 6)));");
-    _builder.newLine();
-    _builder.append("      \t");
-    _builder.append("// END: external functions only");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("}");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("    ");
     _builder.append("public void compute() {");
-    _builder.newLine();
-    _builder.append("      ");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("}");
@@ -131,8 +136,8 @@ public class Assignment2Generator extends AbstractGenerator {
       String _name_2 = math.getName();
       _builder.append(_name_2, "\t");
       _builder.append(": \" + \"is \" +  ");
-      int _compute_1 = this.compute(math);
-      _builder.append(_compute_1, "\t");
+      String _name_3 = math.getName();
+      _builder.append(_name_3, "\t");
       _builder.append(");");
       _builder.newLineIfNotEmpty();
       return _builder.toString();
@@ -172,10 +177,10 @@ public class Assignment2Generator extends AbstractGenerator {
         _builder_1.append("System.out.println(\"Result of: \" +  \"");
         String _displayExp_2 = this.displayExp(((Let)exp).getBody());
         _builder_1.append(_displayExp_2, "\t");
-        _builder_1.append("\" + \" is: \" + ");
-        int _compute_2 = this.compute(math);
-        _builder_1.append(_compute_2, "\t");
-        _builder_1.append(");");
+        _builder_1.append("\" + \" is: \" + (");
+        String _displayExp_3 = this.displayExp(((Let)exp).getBody());
+        _builder_1.append(_displayExp_3, "\t");
+        _builder_1.append("));");
         _builder_1.newLineIfNotEmpty();
         return _builder_1.toString();
       } else {
@@ -185,10 +190,10 @@ public class Assignment2Generator extends AbstractGenerator {
         _builder_2.append("System.out.println(\"Math is: \" + \"");
         String _display = this.display(math);
         _builder_2.append(_display, "\t");
-        _builder_2.append("\" + \" - result is: \" + ");
-        int _compute_3 = this.compute(math);
-        _builder_2.append(_compute_3, "\t");
-        _builder_2.append(");");
+        _builder_2.append("\" + \" result is: \" + (");
+        String _display_1 = this.display(math);
+        _builder_2.append(_display_1, "\t");
+        _builder_2.append("));");
         _builder_2.newLineIfNotEmpty();
         return _builder_2.toString();
       }
