@@ -31,7 +31,7 @@ class Assignment2Generator extends AbstractGenerator {
 		// Gets the Model from xtext and creates an Iterable list
 		val model = resource.allContents.filter(Model).next;
 		
-//		Goes though each result and does the magic; Used for testing
+//		Goes though each result and creates a JOptionPane and displays the result; Used for testing
 //		for(test: model.mathexp){
 //			val result = test.compute
 //			System.out.println("Math expression = "+test.display)
